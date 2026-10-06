@@ -1,3 +1,5 @@
+> HISTORICAL BASELINE REPORT: the old id check was incorrect. See ID-FIX-TEST-REPORT.md for the identity fix.
+
 # VOCABCLASH App-ready delivery verification
 
 Release: vc-app-r2. Date: 2026-10-06.
