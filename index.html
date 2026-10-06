@@ -3,7 +3,7 @@
 <html lang="zh-TW">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
 <title>VOCAB CLASH | 單字對戰與複習</title>
 <style>
     
@@ -630,7 +630,7 @@ body[data-view="game"] .vc-footer{display:none}
 .vc-ability-card .vc-learn-note{margin-top:7px;font-size:12px;line-height:1.7}
 @media(max-width:600px){#studyStatsView .vc-progress-numbers{grid-template-columns:repeat(2,minmax(0,1fr))}.vc-ability-result{font-size:20px}}
 </style>
-<meta content="好友單字對戰、單人練習與錯題複習。每局 10 題，先看題，再搶答。" name="description"/><meta content="#0D1420" name="theme-color"/><meta content="VOCAB CLASH" property="og:title"/><meta content="10 題，一決高下。好友對戰，錯題再練。" property="og:description"/><link href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2216%22%20fill%3D%22%23151F2E%22/%3E%3Cpath%20d%3D%22M35%2010L16%2035h15l-4%2019%2021-29H33z%22%20fill%3D%22%2383E7DF%22/%3E%3Cpath%20d%3D%22M49%2045v9h-9%22%20fill%3D%22none%22%20stroke%3D%22%23EE9BAF%22%20stroke-width%3D%224%22/%3E%3C/svg%3E" rel="icon" type="image/svg+xml"/><style id="vocab-design-system">/* Vocab Clash 4.2.0 - additive visual system. No rules, transport or storage changes. */
+<meta content="好友單字對戰、單人練習與錯題複習。每局 10 題，先看題，再搶答。" name="description"/><meta content="#060b20" name="theme-color"/><meta content="VOCAB CLASH" property="og:title"/><meta content="10 題，一決高下。好友對戰，錯題再練。" property="og:description"/><style id="vocab-design-system">/* Vocab Clash 4.2.0 - additive visual system. No rules, transport or storage changes. */
 :root{
  --vd-ink:#0d1420;--vd-surface:#151f2e;--vd-raised:#1c2939;--vd-input:#111b29;
  --vd-text:#f3f6fa;--vd-muted:#aab7c9;--vd-line:#344356;--vd-control:#64778f;
@@ -1671,16 +1671,434 @@ body.vc-v2 {
  .vc-v2 button:not(:disabled):is(:hover,:active){transform:none!important}
 }
 </style>
+
+<!-- VOCAB CLASH icon release vc-icons-r1: relative URLs work in GitHub project folders. -->
+<link rel="icon" type="image/x-icon" href="./icons/vocab-tab-r2.ico" sizes="16x16 32x32 48x48 64x64 128x128 256x256">
+<link rel="icon" type="image/png" sizes="16x16" href="./icons/vocab-tab-r2-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./icons/vocab-tab-r2-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="./icons/vocab-tab-r2-48.png">
+<link rel="apple-touch-icon" sizes="152x152" href="./icons/vocab-app-r2-152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="./icons/vocab-app-r2-167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./icons/vocab-app-r2-180.png">
+<link rel="manifest" href="./site.webmanifest?v=vc-app-r2">
+<meta name="application-name" content="VOCAB CLASH">
+<meta name="apple-mobile-web-app-title" content="Vocab Clash">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<style id="vocab-logo-r1">
+.vc-refined .vc-brand .vc-logo{padding:0!important;overflow:hidden;background:#061323!important;border-radius:11px;flex-shrink:0}
+.vc-v2.vc-refined #appHeader .vc-brand .vc-logo{display:flex!important;width:40px;height:40px;transform:none!important;box-shadow:none!important;border:0!important}
+.vc-refined .vc-brand .vc-logo img{display:block;width:100%;height:100%;object-fit:contain}
+@media(max-width:600px){.vc-v2.vc-refined #appHeader .vc-brand{gap:7px}.vc-v2.vc-refined #appHeader .vc-brand .vc-logo{width:28px;height:28px;border-radius:7px}.vc-v2.vc-refined #appHeader h1{font-size:16px!important;letter-spacing:0}}
+@media(max-width:359px){.vc-v2.vc-refined #appHeader .vc-brand{gap:5px}.vc-v2.vc-refined #appHeader .vc-brand .vc-logo{width:24px;height:24px;border-radius:6px}.vc-v2.vc-refined #appHeader h1{font-size:13px!important;letter-spacing:0}}
+.vc-refined .vc-brand .vc-logo::before,.vc-refined .vc-brand .vc-logo::after{display:none}
+</style>
+<style id="vocab-logo-theme">
+/* VOCAB CLASH | Luminous Learning Arena
+   A presentation-only layer over the Logo Ready build. No timing or data rules. */
+:root {
+ --vd-ink:#060b20;--vd-surface:#101c39;--vd-raised:#192c4f;--vd-input:#080f27;
+ --vd-text:#f3f8ff;--vd-muted:#b5c6e3;--vd-line:#304872;--vd-control:#5774a0;
+ --vd-cyan:#5addff;--vd-rose:#ff70b5;--vd-success:#87edc9;--vd-warning:#ffdc86;
+ --v2-cyan-edge:#11529a;--v2-rose-edge:#7d225b;--v2-slate-edge:#04091b;
+ --vd-focus:3px solid #ffdc86;
+ --nc-panel:linear-gradient(145deg,#162c50 0%,#101c39 40%,#0b142c 100%);
+ --nc-button:linear-gradient(180deg,#8cf1ff 0%,#43c9f7 48%,#29a3e7 100%);
+ --nc-button-rose:linear-gradient(180deg,#ffb1d3 0%,#ff70b5 48%,#e74997 100%);
+ --nc-edge:rgba(117,192,255,.32);
+}
+html:has(.vc-neon){background:#060b20;color-scheme:dark}
+body.vc-refined.vc-neon {
+ background-color:var(--vd-ink);color:var(--vd-text);
+ background-image:radial-gradient(ellipse at 3% 22%,#063c6370 0%,transparent 45%),radial-gradient(ellipse at 98% 54%,#65154a40 0%,transparent 42%),linear-gradient(155deg,#060c23,#080c22 65%,#0c1029);
+ background-attachment:fixed;
+}
+/* Stars and diagonal edge lights stay outside the content hierarchy. */
+body.vc-neon::before {
+ content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+ background-image:radial-gradient(circle at 4% 29%,#7edfffaa 0 1px,transparent 1.8px),radial-gradient(circle at 92% 19%,#839eff99 0 1px,transparent 1.8px),radial-gradient(circle at 10% 72%,#ffd78399 0 1px,transparent 2px),radial-gradient(circle at 95% 79%,#ff73bb99 0 1px,transparent 2px),radial-gradient(circle at 52% 10%,#8bcbff66 0 1px,transparent 1.8px),linear-gradient(122deg,transparent 8%,#23caff12 8.1%,transparent 8.3% 92%,#ff4aaa0f 92.15%,transparent 92.3%);
+}
+.vc-neon #mainContent,.vc-neon .vc-footer,.vc-neon #connectionStrip{position:relative}
+.vc-refined.vc-neon #mainContent{padding:42px 28px 42px}
+.vc-refined.vc-neon #mainContent>div{max-width:1192px}
+.vc-refined.vc-neon #viewLobby{grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);gap:56px;align-items:center}
+.vc-refined.vc-neon :is(button,[role=button],summary){-webkit-tap-highlight-color:transparent}
+.vc-refined.vc-neon :is(button,input,select,textarea,summary,[role=button]):focus-visible{outline:var(--vd-focus);outline-offset:4px}
+.vc-refined.vc-neon :is(input:not([type=checkbox]),select,textarea){background:#080f27;border-color:#526b94;color:#f3f8ff;box-shadow:inset 0 2px 4px #0006;border-radius:12px}
+.vc-refined.vc-neon :is(input,textarea)::placeholder{color:#9bb0d1;opacity:1}
+.vc-refined.vc-neon :is(input:not([type=checkbox]),select,textarea):focus{border-color:var(--vd-cyan);box-shadow:0 0 0 3px #38cfff20,inset 0 2px 4px #0004}
+.vc-refined.vc-neon select option{background:#101c39;color:#f3f8ff}
+.vc-refined.vc-neon button:disabled{transform:none;filter:none;box-shadow:none;opacity:.6}
+/* Header: the compact emblem and the same icy/rose wordmark. */
+.vc-refined.vc-neon #appHeader{background:linear-gradient(180deg,#101b37f7,#080f25f5);border-bottom:1px solid #365785;box-shadow:0 2px 24px #01041370;backdrop-filter:blur(14px);padding:13px 26px}
+.vc-refined.vc-neon #appHeader>div{max-width:1192px;gap:16px}
+.vc-refined.vc-neon .vc-brand .vc-logo{width:46px;height:46px;background:transparent;border:0;border-radius:12px;transform:none;box-shadow:0 0 18px #42cfff24}
+.vc-refined.vc-neon .vc-brand .vc-logo img{width:100%;height:100%;object-fit:contain;border-radius:12px}
+.vc-refined.vc-neon #appHeader h1{font-size:20px;font-style:italic;letter-spacing:.015em;line-height:1.15;color:#daf8ff;background:none;-webkit-text-fill-color:initial;text-shadow:0 2px 0 #09254b;white-space:nowrap}
+.vc-neon .nc-word-a{color:#a8efff}
+.vc-neon .nc-word-b{color:#ff9dcc}
+.vc-refined.vc-neon #appHeader .vc-brand-subtitle{font-size:11px!important;color:#acbdd7;letter-spacing:.08em;margin-top:5px}
+.vc-refined.vc-neon :is(#audioToggleBtn,.vc-settings){min-width:44px;min-height:44px;background:linear-gradient(180deg,#233658,#111e3c);border:1px solid #455e88;border-top-color:#6884b0;border-radius:12px;color:#e5edfa;box-shadow:0 3px 0 #040a1d,inset 0 1px 0 #b2d8ff0d}
+.vc-refined.vc-neon #audioToggleBtn[aria-pressed=true]{color:var(--vd-cyan);border-color:#387ba7;background:linear-gradient(180deg,#194765,#101c39)}
+.vc-refined.vc-neon #settingsBtn i{color:#cfdef4}
+.vc-refined.vc-neon #helpTourBtn svg{color:var(--vd-warning)}
+.vc-refined.vc-neon #connectionStrip{background:#0c1932;border-color:#285977;border-radius:10px}
+/* Lobby: headline and product information; logo stays in the header. */
+.vc-refined.vc-neon .vd-intro{padding:0;isolation:isolate}
+
+.vc-refined.vc-neon #networkPill{display:inline-flex;max-width:100%;border:1px solid #286586;border-radius:7px;background:linear-gradient(100deg,#0e2944,#0a182e);color:#afdcef;font-size:12px;line-height:1.5;padding:5px 10px}
+.vc-refined.vc-neon #lobbyHeadline{font-family:var(--vd-body);color:#f0f7ff;font-weight:800;font-size:clamp(30px,3.5vw,45px);letter-spacing:-.025em;line-height:1.37;margin:22px 0 16px;text-shadow:0 3px 0 #010715;overflow-wrap:normal}
+.vc-refined.vc-neon .vd-intro>p{color:#b3c8e7;font-size:15px;line-height:1.8;margin:0;max-width:32em}
+.vc-refined.vc-neon .vd-match-rules{margin:26px 0 0;padding:18px 0 0;border-top:1px solid #325377;display:flex;gap:0;justify-content:flex-start}
+.vc-refined.vc-neon .vd-match-rules>div{padding:0 24px 0 0;min-width:0;flex:1}
+.vc-refined.vc-neon .vd-match-rules>div+div{border-left:1px solid #2a4161;padding-left:24px}
+.vc-refined.vc-neon .vd-match-rules strong{font-size:30px;font-weight:800;line-height:1.2;letter-spacing:-.02em;color:var(--vd-cyan);text-shadow:0 2px 0 #06314e;font-variant-numeric:tabular-nums}
+.vc-refined.vc-neon .vd-match-rules>div:nth-child(2) strong{color:var(--vd-rose);text-shadow:0 2px 0 #3c1031}
+.vc-refined.vc-neon .vd-match-rules>div:nth-child(3) strong{color:var(--vd-warning);text-shadow:0 2px 0 #392a0f}
+.vc-refined.vc-neon .vd-match-rules span{font-size:12px;color:#b2c2d9;margin-top:4px}
+.vc-refined.vc-neon .vc-home-features{font-size:13px;gap:8px;margin:22px 0 0;color:#b3c8e7}
+.vc-refined.vc-neon .vc-home-features li{padding-left:20px}
+.vc-refined.vc-neon .vc-home-features li::before{width:6px;height:6px;border-radius:1px;background:var(--vd-cyan);box-shadow:0 0 9px #42d7ff40;transform:rotate(45deg);top:.7em}
+.vc-refined.vc-neon .vc-home-features li:nth-child(2)::before{background:var(--vd-rose);box-shadow:0 0 9px #ff59a930}
+.vc-refined.vc-neon .vc-home-features li:nth-child(3)::before{background:var(--vd-warning);box-shadow:0 0 9px #ffd27130}
+/* The same familiar action desk, now carrying the emblem's edge lighting. */
+.vc-refined.vc-neon .vd-workspace{gap:18px}
+.vc-refined.vc-neon .vd-playdesk{padding:28px;border:1px solid #466594;border-top-color:#77b5e2;border-radius:24px;background:radial-gradient(ellipse at 0 0,#12558b35,transparent 55%),radial-gradient(ellipse at 100% 100%,#921c6130,transparent 50%),var(--nc-panel);box-shadow:0 7px 0 #03091d,0 26px 60px #01051590,-8px 0 40px #1db6ff09,8px 8px 40px #e341a309,inset 0 1px 1px #acd8ff33}
+.vc-refined.vc-neon .vd-playdesk::before{left:26px;right:26px;top:-1px;height:2px;background:linear-gradient(90deg,#5adfff,transparent 49% 51%,#ff6cb0);box-shadow:0 0 12px #7dcfff55;border-radius:0}
+.vc-refined.vc-neon .vd-profile{border-bottom:1px solid #365075;margin-bottom:23px;padding-bottom:23px}
+.vc-refined.vc-neon .vd-field-label{font-size:13px;font-weight:600;color:#c6d7ee;margin-bottom:10px}
+.vc-refined.vc-neon #playerNameInput{min-height:50px;font-size:17px;letter-spacing:.01em;background:#080f26;border-color:#526b94}
+.vc-refined.vc-neon .vd-name-input>i{color:#70bcdf}
+.vc-refined.vc-neon .vd-mode-grid{gap:23px}
+.vc-refined.vc-neon .vd-mode{gap:21px}
+.vc-refined.vc-neon .vd-mode-solo{border-left:1px solid #3b476d;padding-left:23px}
+.vc-refined.vc-neon .vd-mode-title{font-size:17px;font-weight:750;gap:9px;color:var(--vd-cyan)}
+.vc-refined.vc-neon .vd-mode-solo .vd-mode-title{color:var(--vd-rose)}
+.vc-refined.vc-neon .vd-mode-title i{background:#063855;color:#7fecff;width:29px;height:29px}
+.vc-refined.vc-neon .vd-mode-solo .vd-mode-title i{background:#4b173a;color:#ff9bc9}
+.vc-refined.vc-neon .vd-online-actions{gap:14px}
+.vc-refined.vc-neon #joinRoomCodeInput,.vc-refined.vc-neon #soloDifficulty{background:#09132b;border-color:#516993;color:#e3f0ff;border-radius:10px;min-height:48px}
+.vc-refined.vc-neon #joinRoomCodeInput{font-size:17px}
+.vc-refined.vc-neon .vd-solo-actions .vc-solo-level{color:#bbcae0}
+/* Bright faces, dark ink and a dark bevel preserve contrast on action buttons. */
+.vc-refined.vc-neon :is(#createRoomBtn,#rematchBtn,#saveSettingsBtn,#confirmLeaveBtn,#tourNext,.vc-study-primary),
+.vc-refined.vc-neon #startGameBtn:not(:disabled){background:var(--nc-button);color:#042442;border:1px solid #baf6ff;border-bottom-color:#31a7d5;box-shadow:0 4px 0 #075494,0 7px 20px #14b6ee22,inset 0 1px 0 #fff9;border-radius:12px;min-height:49px;font-weight:800;text-shadow:0 1px 0 #ffffff33}
+.vc-refined.vc-neon #aiStartBtn{background:var(--nc-button-rose);color:#3b092c;border:1px solid #ffcde5;border-bottom-color:#d7468f;box-shadow:0 4px 0 #7d225b,0 7px 20px #fb3fa31c,inset 0 1px 0 #fff8;border-radius:12px;min-height:49px;font-weight:800;text-shadow:0 1px 0 #ffffff30}
+.vc-refined.vc-neon :is(#joinRoomBtn,#cancelLeaveBtn,.vc-study-actions button:not(.vc-study-primary),.vc-feedback-test,#tourPrev){background:linear-gradient(180deg,#283d66,#162645);color:#e5f1ff;border:1px solid #5877a7;border-top-color:#809bc2;border-radius:10px;box-shadow:0 3px 0 #050b21,inset 0 1px 0 #cbe6ff12}
+.vc-refined.vc-neon #joinRoomBtn{color:#9de9ff}
+.vc-refined.vc-neon :is(#createRoomBtn,#aiStartBtn,#rematchBtn,#saveSettingsBtn,#confirmLeaveBtn,#tourNext,.vc-study-primary,#startGameBtn):not(:disabled):active{transform:translateY(3px);box-shadow:0 1px 0 #174575,inset 0 2px 5px #05254240}
+.vc-refined.vc-neon :is(#createRoomBtn,#aiStartBtn,#rematchBtn,#saveSettingsBtn,#confirmLeaveBtn,#tourNext,.vc-study-primary,#startGameBtn):disabled{background:#243450;color:#b6c6de;border-color:#476185;box-shadow:none;opacity:.65}
+.vc-refined.vc-neon #openWrongBookBtn{padding:19px 23px;background:linear-gradient(110deg,#2f2a2e,#17192d 45%,#111d37);border:1px solid #87714a;border-top-color:#c2a065;border-radius:18px;box-shadow:0 4px 0 #0b0917,0 8px 23px #04061d80,inset 0 1px 0 #ffdb8220;color:#fff3d7}
+.vc-refined.vc-neon #openWrongBookBtn>span>i{color:var(--vd-warning);background:#43382b;width:43px;height:43px}
+.vc-refined.vc-neon #openWrongBookBtn .vd-study-entry-title>span{color:#c8c3be}
+.vc-refined.vc-neon #wrongBookCount{background:#372d22;border:1px solid #746045;color:#ffe2a1;border-radius:7px;font-size:12px;padding:5px 9px;white-space:normal}
+.vc-refined.vc-neon #bankOverview{border-color:#304971;background:#09142b66;border-radius:12px}
+.vc-refined.vc-neon #bankOverview>summary{color:#adcae9;font-size:13px}
+.vc-refined.vc-neon .vc-bank-grid>span{background:#101e38;border:1px solid #344f73;border-radius:10px}
+.vc-refined.vc-neon .vc-bank-grid strong{color:#82dcff}
+/* Room and game panels: lighting around edges, not across the reading surface. */
+.vc-refined.vc-neon :is(.vd-wait-panel,.vd-results-panel){background:var(--nc-panel);border:1px solid #5276a4;border-top-color:#89b3d8;box-shadow:0 6px 0 #03091a,0 22px 60px #010514aa,inset 0 1px 0 #b9d9ff1a;border-radius:24px}
+.vc-refined.vc-neon .vd-wait-panel{max-width:610px}
+.vc-refined.vc-neon #displayRoomCode{font-size:50px;background:linear-gradient(170deg,#0f3152,#07152d);color:#82e8ff;border:1px solid #4690bb;border-radius:16px;box-shadow:inset 0 3px 10px #010616aa,0 0 22px #1dcfff14;text-shadow:0 0 14px #4acfff25}
+.vc-refined.vc-neon .vd-room-code button{background:linear-gradient(#22426a,#14243e);border-color:#4d7299;color:var(--vd-cyan);box-shadow:0 3px 0 #040b1d}
+.vc-refined.vc-neon .vd-wait-player{border-color:#306687;background:linear-gradient(160deg,#103451,#0d1930);border-top:2px solid #5dddff;border-radius:15px}
+.vc-refined.vc-neon .vd-wait-player+div{border-color:#79406a;border-top-color:#ff76b9;background:linear-gradient(200deg,#38203f,#13162e)}
+.vc-refined.vc-neon .vd-wait-player>div:first-child{background:#113e5a;border-color:#50bfe1;color:#79e8ff}
+.vc-refined.vc-neon .vd-wait-player+div>div:first-child{background:#4a2345;border-color:#bc5a94;color:#ffa5d1}
+.vc-refined.vc-neon #viewGame{max-width:780px}
+.vc-refined.vc-neon .vc-live-scoreboard{background:linear-gradient(100deg,#112f4c,#101c38 43%,#101c38 57%,#36203e);border:1px solid #4d658e;border-top-color:#80a6ca;box-shadow:0 5px 0 #030918,0 8px 30px #03071990,inset 0 1px 0 #b5d8ff1a;border-radius:20px}
+.vc-refined.vc-neon .vc-score-value strong{font-size:43px;line-height:1.12;font-weight:850;letter-spacing:-.025em;text-shadow:0 2px 0 #031127;font-variant-numeric:tabular-nums}
+.vc-refined.vc-neon #gameP1Score{color:#8beaff}
+.vc-refined.vc-neon #gameP2Score{color:#ffa0d2}
+.vc-refined.vc-neon .vc-score-name{color:#bfefff}
+.vc-refined.vc-neon .vc-score-p2 .vc-score-name{color:#ffc2e2}
+.vc-refined.vc-neon .vc-score-middle{border-left:1px solid #47648760;border-right:1px solid #47648760}
+.vc-refined.vc-neon .vc-score-caption{color:#b2c5df}
+.vc-refined.vc-neon #roundIndicatorBadge{background:#0a142c;border:1px solid #466287;color:#dce9fa;border-radius:8px;font-weight:650}
+.vc-refined.vc-neon .vc-self{background:#204962;color:#c9f6ff;border-color:#62b3d1}
+.vc-refined.vc-neon .vc-score-p2 .vc-self{background:#462444;color:#ffcae3;border-color:#a9578c}
+.vc-refined.vc-neon .vc-score-status{color:#b1c1d9;font-size:12px}
+.vc-refined.vc-neon .vc-combo{background:#342b20;color:#ffe2a0;border-color:#826a43;border-radius:6px;box-shadow:none;font-size:11px}
+.vc-refined.vc-neon .vc-live-gauge{background:#081124;border-color:#263c5c;height:7px}
+.vc-refined.vc-neon #scoreGaugeP1{background:linear-gradient(90deg,#1686dc,#67e6ff)}
+.vc-refined.vc-neon #scoreGaugeP2{background:linear-gradient(90deg,#ff85bf,#b62c7c)}
+.vc-refined.vc-neon #questionContainer{background:linear-gradient(155deg,#132544,#0c1731 44%,#0b142b);border:1px solid #45638e;border-top-color:#6889b6;box-shadow:0 6px 0 #020718,0 20px 55px #00071870,inset 0 1px 0 #afd4ff20;border-radius:24px;padding:27px;transition:none}
+.vc-refined.vc-neon #questionContainer::before{content:'';position:absolute;inset:0 auto auto 15%;width:70%;height:1px;background:linear-gradient(90deg,transparent,#55dfff85,#ff70bd70,transparent);pointer-events:none}
+.vc-refined.vc-neon #questionContainer[data-preview=true]{border-color:#ae884d;background:linear-gradient(160deg,#22253b,#10192f 55%)}
+.vc-refined.vc-neon #questionContainer[data-preview=true] #displayWord{color:#fff4d9}
+.vc-refined.vc-neon #questionContainer.boss-active{border-color:#b95991}
+.vc-refined.vc-neon #bossBanner{background:linear-gradient(90deg,#42213e,#572747,#42213e);color:#ffdeec;border-bottom:1px solid #b86593}
+.vc-refined.vc-neon #timerText{color:var(--vd-warning);font-size:20px;line-height:1.25;font-variant-numeric:tabular-nums}
+.vc-refined.vc-neon #timerBar{background:linear-gradient(90deg,#169ae9,#6fe8ff);box-shadow:0 0 12px #2bc9ff45;transition:none}
+.vc-refined.vc-neon #timerBar.vc-timer-warning{background:linear-gradient(90deg,#d73583,#ff81b8)!important;box-shadow:none}
+.vc-refined.vc-neon #wordCategoryBadge{background:#132d48;border-color:#4a7192;color:#b2e8ff;border-radius:6px;font-size:12px}
+.vc-refined.vc-neon #currentMaxPoints{background:#322a20;border-color:#8f7144;color:#ffe3a6;border-radius:6px;font-size:12px}
+.vc-refined.vc-neon #displayWord{color:#f4f8ff;text-shadow:none;line-height:1.36}
+.vc-refined.vc-neon #displaySentence{color:#b6c9e6;text-shadow:none}
+.vc-refined.vc-neon .vc-preview-hint{color:#ebd6a9}
+.vc-refined.vc-neon #optionsGrid{gap:12px}
+/* NEVER delay or animate timed choice visibility. */
+.vc-refined.vc-neon .vc-option{background:linear-gradient(175deg,#1c3153,#13213c);color:#f4f8ff;border:1px solid #4e6994;border-top-color:#7997bb;box-shadow:0 4px 0 #040c21,inset 0 1px 0 #d8eaff10;border-radius:13px;min-height:75px;transition:background-color 90ms,border-color 90ms,box-shadow 90ms;animation:none}
+.vc-refined.vc-neon .vc-option .vc-option-letter{background:linear-gradient(#31527a,#1c3456);border:1px solid #6a8fb5;color:#a7eaff;border-radius:8px;box-shadow:0 2px 0 #08162b;width:32px;height:33px}
+.vc-refined.vc-neon .vc-option-text{color:inherit;font-size:17px;line-height:1.45}
+.vc-refined.vc-neon .vc-option:active:not(:disabled){background:#25466b;transform:none;box-shadow:0 1px 0 #040c21,inset 0 2px 6px #040c2155}
+.vc-refined.vc-neon .vc-option:disabled{opacity:1;filter:none;color:#e3edf9;transform:none}
+.vc-refined.vc-neon .vc-option.is-selected{background:linear-gradient(#234567,#15324b);border-color:#62ddfa;box-shadow:0 0 0 1px #3acfff33,0 3px 0 #0b1d34}
+.vc-refined.vc-neon .vc-option.is-correct{background:linear-gradient(#174c46,#123731);color:#d4ffef;border-color:#6de3b9;box-shadow:0 3px 0 #0c2d29,inset 0 1px 0 #beffe42b}
+.vc-refined.vc-neon .vc-option.is-correct .vc-option-letter{background:#205547;color:#baffdf;border-color:#6ddaac}
+.vc-refined.vc-neon .vc-option.is-wrong{background:linear-gradient(#512440,#371c34);color:#ffddeb;border-color:#e879ab;box-shadow:0 3px 0 #241124}
+.vc-refined.vc-neon .vc-option.is-wrong .vc-option-letter{background:#602c48;color:#ffd4e7;border-color:#d5739b}
+.vc-refined.vc-neon .vc-option.dim{opacity:.62}
+.vc-refined.vc-neon .vc-round-countdown{background:#0b162ef2;color:#d2e8ff;border-radius:22px}
+.vc-refined.vc-neon .vc-round-countdown strong{color:#a5eaff;text-shadow:0 0 28px #33b4ff30}
+.vc-refined.vc-neon #roundResultBanner{border-radius:10px;background:#102b43;border-color:#3e759a;color:#c9ebff;box-shadow:none}
+.vc-refined.vc-neon #roundResultBanner.correct{background:#123b32;border-color:#428f76;color:#baffdf}
+.vc-refined.vc-neon #roundResultBanner.wrong{background:#371d31;border-color:#ab5982;color:#ffd0e3}
+.vc-refined.vc-neon .vc-shortcuts{color:#849bbd}
+.vc-refined.vc-neon .vc-shortcuts kbd{background:#101c36;border-color:#3b5276;color:#b9cde8}
+/* Results: crown gold without moving, obscuring or replacing the real scores. */
+.vc-refined.vc-neon #resultIcon{color:#ffde8e;background:radial-gradient(circle at 40% 24%,#755829,#372a22);border:1px solid #d3a65e;box-shadow:0 3px 0 #352418,0 0 34px #ffbe4723,inset 0 1px 0 #fff0c44d;border-radius:17px}
+.vc-refined.vc-neon #resultTitle{color:#fff0d3;letter-spacing:-.015em}
+.vc-refined.vc-neon :is(#p1ResultBox,#p2ResultBox){background:linear-gradient(160deg,#153e56,#0d1c33);border:1px solid #397a9c;border-top:3px solid #60dfff;box-shadow:0 3px 0 #02091b;border-radius:15px}
+.vc-refined.vc-neon #p2ResultBox{background:linear-gradient(200deg,#422340,#15162d);border-color:#8a4872;border-top-color:#ff83bf}
+.vc-refined.vc-neon #resP1Score{color:#83e8ff}
+.vc-refined.vc-neon #resP2Score{color:#ffa0d0}
+.vc-refined.vc-neon :is(#p1WinTag,#p2WinTag){background:linear-gradient(#ffefb8,#ffc856);color:#422b0e;border:1px solid #fbe0a0;box-shadow:0 2px 0 #664015}
+.vc-refined.vc-neon #resultsSeries{background:linear-gradient(#15253e,#0e1b34);border-color:#4b6287;border-radius:13px;box-shadow:inset 0 1px 0 #c9dfff0d}
+.vc-refined.vc-neon .vc-series-head{color:#c3d3ea}
+.vc-refined.vc-neon .vc-series-meta{color:#afc4e1}
+.vc-refined.vc-neon .vc-review{background:#0b172e;border-color:#3f597e;border-radius:10px}
+.vc-refined.vc-neon #resultsWrongBookBtn{background:linear-gradient(100deg,#332c29,#121c32);border-color:#927747;color:#ffdda0}
+.vc-refined.vc-neon #resultsWrongBookCount{color:#f4dba9}
+/* Learning is the calm counterpart of the arena, with shared gold bookmarks. */
+.vc-refined.vc-neon :is(#wrongBookDialog,#settingsDialog,#leaveConfirmDialog){background:var(--nc-panel);color:#f3f8ff;border:1px solid #6183b0;border-top-color:#96bce2;border-radius:23px;box-shadow:0 8px 0 #020616,0 30px 100px #010414bb,inset 0 1px 0 #daf0ff2a}
+.vc-refined.vc-neon :is(#wrongBookDialog,#settingsDialog,#leaveConfirmDialog)::backdrop{background:#020719d9;backdrop-filter:blur(5px)}
+.vc-refined.vc-neon :is(.vc-study-head,.vc-dialog-head){background:linear-gradient(110deg,#203756,#12223f);border-bottom:1px solid #4b6b92;color:#e9f3ff}
+.vc-refined.vc-neon :is(.vc-study-head h2,.vc-dialog-head h3){font-weight:750}
+.vc-refined.vc-neon :is(#closeWrongBookBtn,.vc-dialog-head>button){background:linear-gradient(#304a70,#1c2d4b);border:1px solid #6886ad;border-radius:11px;color:#edf5ff;box-shadow:0 2px 0 #030a1e}
+.vc-refined.vc-neon .vc-learn-nav{background:#070f24;border:1px solid #345077;border-radius:12px;padding:5px;gap:5px}
+.vc-refined.vc-neon .vc-learn-nav button{color:#c0d0e8;background:transparent;border:1px solid transparent;box-shadow:none;border-radius:8px;min-height:44px}
+.vc-refined.vc-neon .vc-learn-nav button[aria-pressed=true]{background:linear-gradient(#244a69,#183853);color:#b9f3ff;border-color:#4c9fc2;box-shadow:0 2px 0 #081727,inset 0 1px 0 #acdcff22}
+.vc-refined.vc-neon .vc-study-tabs{gap:7px}
+.vc-refined.vc-neon .vc-study-tabs button{background:linear-gradient(#223859,#14243e);border-color:#526f98;color:#ccd9ed;border-radius:8px;min-height:44px}
+.vc-refined.vc-neon .vc-study-tabs button[aria-pressed=true]{background:linear-gradient(#50402b,#372c23);border-color:#b99352;color:#ffdfa1;box-shadow:inset 0 1px 0 #ffe4a62b}
+.vc-refined.vc-neon .vc-wrong-card{background:linear-gradient(155deg,#152945,#0e1b33);border:1px solid #3e5e83;border-radius:15px;padding:18px;box-shadow:0 3px 0 #050c21}
+.vc-refined.vc-neon .vc-wrong-card:focus-within{border-color:#73bedb}
+.vc-refined.vc-neon .vc-wrong-title{color:#e5f4ff}
+.vc-refined.vc-neon .vc-study-tags span{background:#1b304c;color:#c9def4;border-color:#44638a;border-radius:5px}
+.vc-refined.vc-neon .vc-study-tags span:first-child{background:#352d24;color:#fadd9e;border-color:#8e774d}
+.vc-refined.vc-neon .vc-bookmark{background:linear-gradient(#243d5d,#112440);color:#bad9f2;border:1px solid #6386a9;border-radius:10px;box-shadow:0 2px 0 #050c22}
+.vc-refined.vc-neon .vc-bookmark[aria-pressed=true]{background:linear-gradient(#59462b,#3b2e20);color:#ffda74;border-color:#ccaa61;box-shadow:0 2px 0 #21170f,inset 0 1px 0 #ffeec02b}
+.vc-refined.vc-neon .vc-pronounce{background:linear-gradient(#1b3e58,#102b44);color:#b3ecff;border-color:#467e9d;border-radius:9px;box-shadow:0 2px 0 #041323}
+.vc-refined.vc-neon .vc-pronounce[aria-pressed=true]{background:#264e63;color:#d2f9ff;border-color:#84def2}
+.vc-refined.vc-neon .vc-flash-card{background:radial-gradient(ellipse at 50% 0,#275a7a30,transparent 70%),linear-gradient(#142844,#0c1831);border:1px solid #6382a3;border-top:2px solid #a2c9e3;border-radius:20px;box-shadow:0 5px 0 #030b1d}
+.vc-refined.vc-neon #flashWord{color:#e4f5ff;text-shadow:none}
+.vc-refined.vc-neon .vc-learn-hero{background:linear-gradient(130deg,#1c3449,#192139);border:1px solid #527187;border-radius:15px;box-shadow:inset 0 1px 0 #cbefff17}
+.vc-refined.vc-neon .vc-due-word{border-color:#365276;background:#101f38}
+.vc-refined.vc-neon .vc-review-answer{background:#10342e;border-color:#49987d;color:#d8ffee;border-radius:13px}
+.vc-refined.vc-neon #progressNumbers>div{background:linear-gradient(#1c3555,#102139);border:1px solid #436185;border-radius:12px;box-shadow:0 3px 0 #030c20}
+.vc-refined.vc-neon #progressNumbers strong{color:#8de7ff;font-variant-numeric:tabular-nums}
+.vc-refined.vc-neon #progressNumbers>div:nth-child(2) strong{color:#94eac5}
+.vc-refined.vc-neon #progressNumbers>div:nth-child(3) strong{color:#ffafd0}
+.vc-refined.vc-neon #progressNumbers>div:nth-child(4) strong{color:#ffe19a}
+.vc-refined.vc-neon #progressNumbers span{color:#b8cce6}
+.vc-refined.vc-neon .vc-ability-card{background:linear-gradient(135deg,#302a2a,#131e34);border:1px solid #796343;border-radius:15px;padding:19px;margin-top:22px}
+.vc-refined.vc-neon .vc-ability-result{color:#ffe19d}
+.vc-refined.vc-neon .vc-ability-result[data-status=insufficient]{color:#d3dfee}
+.vc-refined.vc-neon :is(.vc-learn-note,.vc-study-pos,.vc-ability-limit){color:#b5c8e3}
+.vc-refined.vc-neon :is(.vc-study-backup,.vc-learn-details){border-color:#3a4f70}
+.vc-refined.vc-neon :is(.vc-study-backup summary,.vc-learn-details summary){color:#c7def5}
+.vc-refined.vc-neon .vc-study-backup-actions button{background:linear-gradient(#253b5a,#17263f);color:#d7e6f9;border:1px solid #5b789c;border-radius:10px;min-height:44px;box-shadow:0 2px 0 #040b1d}
+.vc-refined.vc-neon .vc-study-danger{background:#371a2b;border-color:#ab5d80;color:#ffc5db}
+.vc-refined.vc-neon .vc-pref-row{border-bottom-color:#344c6e}
+.vc-refined.vc-neon .vc-dialog-body .vc-pref-row input{background:#263b59;border-color:#617ea4;box-shadow:inset 0 2px 3px #0004}
+.vc-refined.vc-neon .vc-dialog-body .vc-pref-row input:checked{background:linear-gradient(#2f91c1,#08658e);border-color:#5cdaff}
+.vc-refined.vc-neon .vc-pref-row input::after{background:linear-gradient(#fff,#c1e5f3);box-shadow:0 1px 3px #01081877}
+.vc-refined.vc-neon .vc-score-rules table{border-color:#385477}
+.vc-refined.vc-neon .vc-score-rules :is(th,td){border-color:#385477}
+.vc-refined.vc-neon .vc-dialog-body :is(p,small){color:#b5c7e2}
+/* Tutorial geometry is owned by the existing, tested tutorial module. */
+.vc-refined.vc-neon :is(.vc-tour-panel,#tourDemo){background:linear-gradient(150deg,#1d3655,#111f3d);border:1px solid #83badb;border-radius:18px;box-shadow:0 5px 0 #040b1f,0 20px 60px #0105199c,inset 0 1px 0 #dff4ff22}
+.vc-refined.vc-neon #tourTitle{color:#d3f4ff}
+.vc-refined.vc-neon #tourDescription{color:#c2d3eb}
+.vc-refined.vc-neon #tourCounter{color:#ffdf9d}
+.vc-refined.vc-neon #tourClose{color:#ebf4ff;background:#1a3050;border:1px solid #5a7a9f;border-radius:9px}
+.vc-refined.vc-neon #tourSpotlight{border-color:#7be6ff;box-shadow:0 0 0 200vmax #02081bd1}
+.vc-refined.vc-neon #tourSpotlight[data-empty=true]{box-shadow:none}
+.vc-refined.vc-neon .vc-tour-note{color:#ecd8b6;border-color:#665442}
+.vc-refined.vc-neon .vc-tour-nav{border-top-color:#3e587b}
+.vc-refined.vc-neon .vc-tour-room{background:#0d2744;border-color:#438bac;color:#8deaff}
+.vc-refined.vc-neon .vc-tour-question{background:#0a172e;border-color:#475e83}
+.vc-refined.vc-neon .vc-tour-question strong{color:#f3f8ff}
+.vc-refined.vc-neon .vc-tour-bookmark{background:#0d1d37;border-color:#48688f}
+.vc-refined.vc-neon .vc-tour-bookmark-icon{color:#ffdf92;background:#49371f}
+.vc-refined.vc-neon .vc-overlay>div{background:var(--nc-panel);border-color:#a48752;color:#f2f7ff;box-shadow:0 8px 0 #030919,0 30px 80px #010415bd}
+.vc-refined.vc-neon .vc-overlay h3{color:#ffdf9a}
+.vc-refined.vc-neon .vc-overlay button{background:var(--nc-button);color:#062640;border-color:#a3efff}
+.vc-refined.vc-neon .vc-toast{background:#10203a;border-color:#417696;color:#e1efff;box-shadow:0 5px 0 #02091e,0 18px 40px #0007}
+.vc-refined.vc-neon .vc-toast-error{border-color:#b9618e}
+.vc-refined.vc-neon .vc-footer{font-size:11px;color:#859fc1;padding:20px 16px 24px}
+/* Interaction energy is event-driven. Never apply pointer movement to answer cards. */
+@media(hover:hover) and (pointer:fine){
+ .vc-refined.vc-neon :is(#createRoomBtn,#rematchBtn,#saveSettingsBtn,#confirmLeaveBtn,#tourNext,.vc-study-primary,#startGameBtn):hover:not(:disabled){filter:brightness(1.08);box-shadow:0 4px 0 #075494,0 7px 24px #19bff033,inset 0 1px 0 #fff8}
+ .vc-refined.vc-neon #aiStartBtn:hover:not(:disabled){filter:brightness(1.06);box-shadow:0 4px 0 #7d225b,0 7px 24px #ff4aa333,inset 0 1px 0 #fff7}
+ .vc-refined.vc-neon :is(.vc-settings,#audioToggleBtn,#joinRoomBtn,#tourPrev,.vc-study-tabs button,.vc-study-backup-actions button):hover:not(:disabled){background:linear-gradient(#304f77,#1d3254);border-color:#7ba1ca;color:#effaff}
+ .vc-refined.vc-neon #openWrongBookBtn:hover{border-color:#dbb777;background:linear-gradient(110deg,#3c312b,#1e2036 45%,#162744);box-shadow:0 4px 0 #0b0917,0 8px 26px #d7912c12}
+ .vc-refined.vc-neon .vc-option:not(:disabled):hover{background:linear-gradient(#29466d,#1c3457);border-color:#79dfff;box-shadow:0 4px 0 #040c21,0 0 0 1px #52d6ff25;transform:none}
+ .vc-refined.vc-neon .vc-bookmark:hover{border-color:#e5c678;color:#ffe9a4}
+ .vc-refined.vc-neon .vc-pronounce:hover{background:#275774;border-color:#8fdafa;color:#e3faff}
+}
+@media(min-width:1600px){.vc-refined.vc-neon #mainContent{padding-top:58px;padding-bottom:58px}}
+@media(max-width:1050px) and (min-width:801px){
+ .vc-refined.vc-neon #viewLobby{gap:32px;grid-template-columns:minmax(0,1fr) minmax(0,1.16fr)}.vc-refined.vc-neon #lobbyHeadline{font-size:33px}
+ .vc-refined.vc-neon .vd-playdesk{padding:23px}.vc-refined.vc-neon .vd-mode-grid{gap:17px}
+ .vc-refined.vc-neon .vd-mode-solo{padding-left:17px}.vc-refined.vc-neon .vd-mode-title{font-size:15px;gap:7px}
+}
+@media(max-width:800px){
+ .vc-refined.vc-neon #mainContent{padding:26px 20px 32px}
+ .vc-refined.vc-neon #viewLobby{display:flex;flex-direction:column;gap:28px;align-items:stretch;max-width:590px;margin-inline:auto}
+ .vc-refined.vc-neon .vd-intro{padding:0}
+ .vc-refined.vc-neon #lobbyHeadline{font-size:36px;margin:18px 0 13px}
+ .vc-refined.vc-neon .vd-match-rules{margin-top:21px;padding-top:17px}
+ .vc-refined.vc-neon .vc-home-features{margin-top:18px;gap:6px}
+ .vc-refined.vc-neon .vd-playdesk{padding:24px}
+ .vc-refined.vc-neon .vd-mode-title{font-size:16px}
+}
+@media(max-width:560px){
+ .vc-refined.vc-neon #appHeader{padding:10px 12px}
+ .vc-refined.vc-neon #appHeader>div{gap:8px}
+ .vc-refined.vc-neon .vc-brand{gap:8px;min-width:0}
+ .vc-refined.vc-neon .vc-brand .vc-logo{width:39px;height:39px;flex-shrink:0}
+ .vc-refined.vc-neon #appHeader h1{font-size:16px;letter-spacing:.005em}
+ .vc-refined.vc-neon #appHeader .vc-brand-subtitle{font-size:10px!important;letter-spacing:.01em;margin-top:3px}
+ .vc-refined.vc-neon #appHeader>div>div:last-child{gap:6px}
+ .vc-refined.vc-neon :is(#audioToggleBtn,.vc-settings){padding:9px;width:44px;height:44px;border-radius:10px}
+ .vc-refined.vc-neon .vd-help-label,.vc-refined.vc-neon .vd-settings-label{display:none}
+ .vc-refined.vc-neon #mainContent{padding:22px 16px 25px}
+ .vc-refined.vc-neon #networkPill{font-size:11px;padding:4px 8px}
+ .vc-refined.vc-neon #lobbyHeadline{font-size:33px;line-height:1.4;margin:17px 0 12px;letter-spacing:-.035em}
+ .vc-refined.vc-neon .vd-intro>p{font-size:13px;line-height:1.8}
+ .vc-refined.vc-neon .vd-match-rules>div{padding-right:15px}
+ .vc-refined.vc-neon .vd-match-rules>div+div{padding-left:15px}
+ .vc-refined.vc-neon .vd-match-rules strong{font-size:26px}
+ .vc-refined.vc-neon .vd-match-rules span{font-size:11px}
+ .vc-refined.vc-neon .vc-home-features{font-size:12px}
+ .vc-refined.vc-neon .vd-playdesk{padding:20px;border-radius:20px}
+ .vc-refined.vc-neon .vd-profile{padding-bottom:18px;margin-bottom:18px}
+ .vc-refined.vc-neon .vd-mode-grid{gap:23px}
+ .vc-refined.vc-neon .vd-mode-solo{border-left:0;border-top:1px solid #3d4468;padding:21px 0 0}
+ .vc-refined.vc-neon .vd-mode{gap:15px}
+ .vc-refined.vc-neon .vd-mode-title{font-size:17px}
+ .vc-refined.vc-neon .vd-mode-title i{width:26px;height:26px}
+ .vc-refined.vc-neon .vd-online-actions{gap:13px}
+ .vc-refined.vc-neon #openWrongBookBtn{padding:17px 18px;border-radius:16px}
+ .vc-refined.vc-neon #openWrongBookBtn .vd-study-entry-title strong{font-size:16px}
+ .vc-refined.vc-neon #openWrongBookBtn .vd-study-entry-title>span{font-size:11px}
+ .vc-refined.vc-neon #wrongBookCount{font-size:11px;max-width:83px;padding:4px 6px}
+ .vc-refined.vc-neon #viewGame{width:100%}
+ .vc-refined.vc-neon #questionContainer{padding:19px;border-radius:20px}
+ .vc-refined.vc-neon .vc-live-scoreboard{border-radius:17px}
+ .vc-refined.vc-neon .vc-score-value strong{font-size:32px}
+ .vc-refined.vc-neon .vc-score-status{font-size:11px}
+ .vc-refined.vc-neon .vc-combo{font-size:10px}
+ .vc-refined.vc-neon .vc-score-middle{padding-inline:6px}
+ .vc-refined.vc-neon #roundIndicatorBadge{font-size:11px;padding:5px 7px}
+ .vc-refined.vc-neon .vc-option{min-height:64px;padding:12px;border-radius:12px}
+ .vc-refined.vc-neon .vc-option-text{font-size:16px}
+ .vc-refined.vc-neon .vc-option .vc-option-letter{width:30px;height:31px;flex-shrink:0}
+ .vc-refined.vc-neon :is(.vd-wait-panel,.vd-results-panel){border-radius:20px}
+ .vc-refined.vc-neon #displayRoomCode{font-size:42px}
+ .vc-refined.vc-neon :is(#wrongBookDialog,#settingsDialog,#leaveConfirmDialog){border-radius:19px}
+ .vc-refined.vc-neon .vc-ability-card{padding:16px}
+ .vc-refined.vc-neon .vc-wrong-card{padding:16px}
+ .vc-refined.vc-neon .vc-learn-nav button{font-size:13px}
+}
+@media(max-width:360px){
+ .vc-refined.vc-neon #appHeader{padding-inline:8px}
+ .vc-refined.vc-neon #appHeader h1{font-size:14px}
+ .vc-refined.vc-neon .vc-brand .vc-logo{width:32px;height:32px}
+ .vc-refined.vc-neon .vc-brand{gap:5px}
+ .vc-refined.vc-neon #appHeader>div>div:last-child{gap:4px}
+ .vc-refined.vc-neon #mainContent{padding-inline:12px}
+ .vc-refined.vc-neon #lobbyHeadline{font-size:30px}
+ .vc-refined.vc-neon .vd-playdesk{padding:17px}
+ .vc-refined.vc-neon .vc-score-value strong{font-size:28px}
+ .vc-refined.vc-neon .vc-score-name{font-size:11px}
+ .vc-refined.vc-neon #questionContainer{padding:16px}
+ .vc-refined.vc-neon #openWrongBookBtn{padding:15px 13px}
+ .vc-refined.vc-neon #openWrongBookBtn>span>i{width:32px;height:32px}
+ .vc-refined.vc-neon .vc-study-tabs{gap:5px}
+}
+/* Preserve guided-help geometry and its dedicated small-screen scroll area. */
+.vc-neon.vc-touring::before{display:none}
+.vc-refined.vc-neon.vc-touring :is(.vd-playdesk,.vd-wait-panel,.vd-results-panel){box-shadow:none}
+.vc-refined.vc-neon[data-v2-motion=reduce] *, .vc-refined.vc-neon.vc-touring *{scroll-behavior:auto!important}
+@media(prefers-reduced-motion:reduce){.vc-refined.vc-neon *,.vc-refined.vc-neon *::before,.vc-refined.vc-neon *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media(forced-colors:active){body.vc-neon::before{display:none}.vc-refined.vc-neon button{border:1px solid ButtonText}}
+/* Stack metadata under its number at every width; do not let CJK labels become vertical. */
+.vc-refined.vc-neon .vd-match-rules>div{display:flex;flex-direction:column;align-items:flex-start;gap:4px}
+.vc-refined.vc-neon .vd-match-rules span{display:block;white-space:nowrap;margin-top:0;line-height:1.5}
+@media(max-width:560px){
+ .vc-refined.vc-neon .vd-match-rules strong{font-size:26px}
+ .vc-refined.vc-neon .vd-match-rules>div{padding-right:12px}
+ .vc-refined.vc-neon .vd-match-rules>div+div{padding-left:12px}
+}
+/* During the tour, its reserved stage wins over the normal two-column lobby. */
+.vc-refined.vc-neon.vc-touring #mainContent{padding:12px 0}
+.vc-refined.vc-neon.vc-touring #viewLobby{display:flex;flex-direction:column;align-items:stretch;gap:22px;max-width:100%}
+.vc-refined.vc-neon.vc-touring .vd-intro{width:100%}
+@media(max-width:800px){
+ .vc-refined.vc-neon.vc-touring[data-tour-layout=side] .vd-mode-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
+ .vc-refined.vc-neon.vc-touring[data-tour-layout=side] .vd-mode-solo{padding:16px 0 0;border-left:0;border-top:1px solid #354a70}
+ .vc-refined.vc-neon.vc-touring[data-tour-layout=side] .vd-playdesk{padding:15px}
+ .vc-refined.vc-neon.vc-touring[data-tour-layout=side] #appHeader{visibility:hidden}
+ .vc-refined.vc-neon.vc-touring[data-tour-layout=side] .vd-solo-actions{flex-direction:column;align-items:stretch}
+ .vc-refined.vc-neon.vc-touring[data-tour-layout=side] .vd-solo-actions .vc-solo-level{order:0;max-width:100%}
+ .vc-refined.vc-neon.vc-touring[data-tour-layout=side] #openWrongBookBtn{padding:15px 10px}
+}
+.vc-refined.vc-neon #viewResults>div{background:radial-gradient(ellipse at 50% 0,#996a1b18,transparent 45%),var(--nc-panel);border:1px solid #5276a4;border-top-color:#b7985c;box-shadow:0 6px 0 #03091a,0 22px 60px #010514aa,inset 0 1px 0 #ffdda520;border-radius:24px}
+.vc-refined.vc-neon :is(#startStudyBtn,#studyAgainBtn){background:linear-gradient(#263e5f,#182945);color:#dfedfd;border-color:#5d7c9f;border-top-color:#88a0bb;box-shadow:0 3px 0 #040d22}
+.vc-refined.vc-neon .vc-word-actions [data-master]{background:linear-gradient(#3c3540,#292a3c);color:#f1ddbb;border-color:#837154}
+.vc-refined.vc-neon #progressNumbers>div{background:linear-gradient(#1c3555,#102139)}
+.vc-refined.vc-neon .vc-live-scoreboard::before{content:'';position:absolute;top:0;left:18px;right:18px;height:1px;background:linear-gradient(90deg,#74e5ff,#405b7b 48%,#ffa2d0);pointer-events:none}
+.vc-refined.vc-neon .vc-dialog-body .vc-pref-row input:checked::after{background:linear-gradient(#fff,#c1e5f3)}
+
+</style>
+<meta name="vocab-app-release" content="vc-app-r2"/>
+<style id="vocab-app-ready">/* Text-only lobby name and device safe areas. */
+:root{--vc-safe-top:env(safe-area-inset-top,0px);--vc-safe-right:env(safe-area-inset-right,0px);--vc-safe-bottom:env(safe-area-inset-bottom,0px);--vc-safe-left:env(safe-area-inset-left,0px)}
+.vc-refined.vc-neon #lobbyName{display:flex;align-items:baseline;gap:0;width:max-content;max-width:100%;margin:0 0 18px;font-family:var(--vd-display);font-size:clamp(34px,4.25vw,55px);font-weight:900;font-style:italic;line-height:1.15;letter-spacing:-.04em;white-space:nowrap}
+.vc-refined.vc-neon #lobbyName>span:first-child{color:#a9edff;text-shadow:0 2px 0 #125275,0 5px 12px #0099dc28}
+.vc-refined.vc-neon #lobbyName>span:last-child{color:#ffabd5;text-shadow:0 2px 0 #662345,0 5px 12px #df28792a}
+.vc-refined.vc-neon:not(.vc-touring) #appHeader{padding-top:calc(12px + var(--vc-safe-top));padding-left:max(16px,var(--vc-safe-left));padding-right:max(16px,var(--vc-safe-right))}
+.vc-refined.vc-neon:not(.vc-touring) #mainContent{padding-left:max(12px,var(--vc-safe-left));padding-right:max(12px,var(--vc-safe-right))}
+.vc-refined.vc-neon .vc-footer{padding-bottom:calc(18px + var(--vc-safe-bottom))}
+.vc-refined.vc-neon:not(.vc-touring) :is(#wrongBookDialog,#settingsDialog,#leaveConfirmDialog){max-height:calc(100dvh - var(--vc-safe-top) - var(--vc-safe-bottom) - 28px);max-width:calc(100vw - var(--vc-safe-left) - var(--vc-safe-right) - 24px)}
+.vc-refined #appInstallHelp{margin:18px 0;border-top:1px solid var(--vd-line);padding-top:16px;font-size:13px;line-height:1.7}
+.vc-refined #appInstallHelp>summary{min-height:44px;display:list-item;align-content:center;cursor:pointer;color:#99e7ff;font-weight:700}
+.vc-refined #appInstallHelp p{margin:8px 0 12px;font-size:13px;color:var(--vd-muted);line-height:1.8}
+.vc-refined #appInstallHelp #appDisplayStatus{color:#c8e9fa;font-weight:600}
+.vc-refined #appInstallHelp a{display:inline-flex;min-height:44px;align-items:center;color:#99e7ff;text-decoration:underline;text-underline-offset:4px;margin-right:12px}
+.vc-refined #appInstallBtn{min-height:44px;padding:10px 18px;border:1px solid #83d9ef;border-radius:10px;background:#154460;color:#effbff;font-size:14px;font-weight:700;cursor:pointer;margin:4px 0 10px}
+.vc-refined #appInstallBtn:disabled{opacity:.6;cursor:wait}
+.vc-refined #appInstallHelp [hidden]{display:none!important}
+.vc-refined #appInstallHelp :is(button,a,summary):focus-visible{outline:3px solid #ffd482;outline-offset:4px}
+@media(max-width:800px){.vc-refined.vc-neon #lobbyName{font-size:clamp(32px,8.9vw,48px);margin-bottom:14px}}
+@media(min-width:801px){.vc-refined.vc-neon:not(.vc-touring) #mainContent{padding-left:max(24px,var(--vc-safe-left));padding-right:max(24px,var(--vc-safe-right))}}
+@media(display-mode:standalone){html{background:#060b20}.vc-refined.vc-neon{min-height:100dvh}.vc-refined #appInstallBtn{display:none!important}}
+.vc-refined.vc-neon.vc-touring #lobbyName{font-size:clamp(24px,6.5vw,38px);margin-bottom:10px}
+</style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-black vc-refined vc-v2" data-visual-version="2.0" data-design-version="4.4.0" data-view="lobby"><a class="vd-skip" href="#mainContent">跳至主要內容</a>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-black vc-refined vc-v2 vc-neon" data-visual-version="2.0" data-logo-design="neon-r1" data-design-version="4.4.0" data-view="lobby"><a class="vd-skip" href="#mainContent">跳至主要內容</a>
 <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-40 px-4 py-3" id="appHeader">
 <div class="max-w-5xl mx-auto flex items-center justify-between">
 <div aria-label="返回大廳" class="flex items-center space-x-3 cursor-pointer vc-brand vd-brand" onclick="backToLobby()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();backToLobby()}" role="button" tabindex="0">
 <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-cyan-500/30 vc-logo">
-<i aria-hidden="true" class="fa-solid fa-bolt"></i>
+<img src="./icons/vocab-app-r2-192.png" width="40" height="40" alt="" decoding="async">
 </div>
 <div>
-<h1 class="font-gaming font-extrabold text-xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400">VOCAB CLASH</h1>
+<h1 class="font-gaming font-extrabold text-xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400"><span class="nc-word-a">VOCAB</span> <span class="nc-word-b">CLASH</span></h1>
 <p class="text-[10px] text-slate-400 font-mono tracking-widest uppercase vc-brand-subtitle">英文單字對戰</p>
 </div>
 </div>
@@ -1696,7 +2114,7 @@ body.vc-v2 {
 <div class="w-full max-w-4xl mx-auto">
 <!-- VIEW 1: LOBBY SCREEN -->
 <section class="" id="viewLobby">
-<div class="text-center vd-intro"><div class="v2-duel-mark" aria-hidden="true"><svg viewBox="0 0 100 80" fill="none"><g transform="rotate(-14 35 43)"><rect x="10" y="13" width="44" height="56" rx="10" fill="#17394d" stroke="#71deeb" stroke-width="2"/><path d="M22 34h20M22 42h15M22 50h9" stroke="#71deeb" stroke-width="3" stroke-linecap="round"/></g><g transform="rotate(12 70 42)"><rect x="49" y="12" width="42" height="56" rx="10" fill="#3b2944" stroke="#f49db7" stroke-width="2"/><path d="m61 40 6 6 12-13" stroke="#f49db7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g></svg></div>
+<div class="text-center vd-intro"><div id="lobbyName" aria-label="VOCABCLASH"><span>VOCAB</span><span>CLASH</span></div>
 <div aria-live="polite" class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 text-xs font-semibold vd-network" data-connected="false" id="networkPill"><span class="vc-status-dot"></span><span id="networkStatus">建立房間即可連線</span></div>
 <h2 id="lobbyHeadline" class="text-3xl sm:text-5xl font-extrabold tracking-tight font-gaming text-white">把背單字，<br/>變成一場遊戲。</h2>
 <p class="text-slate-400 max-w-xl mx-auto text-sm sm:text-base">單字、片語與流行語，從對戰到真正記住。</p>
@@ -1953,7 +2371,7 @@ body.vc-v2 {
 <label class="vc-pref-row" for="settingGameSound"><span><strong>遊戲音效</strong><small>所有遊戲聲音的總開關</small></span><input id="settingGameSound" onchange="updateFeedbackPreference('sound',this.checked)" role="switch" type="checkbox"/></label>
 <label class="vc-pref-row" for="settingCorrectSound"><span><strong>答對音效 </strong><small id="correctSoundHint"></small></span><input id="settingCorrectSound" onchange="updateFeedbackPreference('correct',this.checked)" role="switch" type="checkbox"/></label>
 <label class="vc-pref-row" for="settingHaptics"><span><strong>答對震動 </strong><small>答對時短震動</small></span><input id="settingHaptics" onchange="updateFeedbackPreference('haptics',this.checked)" role="switch" type="checkbox"/></label>
-<p id="hapticsSupportHint"></p><button class="vc-feedback-test" onclick="testAnswerFeedback()" type="button">測試回饋</button><p id="feedbackTestStatus" role="status"></p></section><div class="v2-motion-control"><label for="v2MotionPreference">介面動態<small>不影響計時與音效</small></label><select id="v2MotionPreference"><option value="auto">跟隨系統</option><option value="off">關閉動態</option></select></div><details class="vc-score-rules" id="scoreRules"><summary>計分規則 </summary><p>先看題目 2 秒；選項出現後，才開始 10 秒作答。</p><p>每秒一個區間，非等差遞減。第一秒內答對的基礎分為 200 分。</p><table aria-label="時間計分區間"><thead><tr><th>剩餘時間</th><th>基礎分</th></tr></thead><tbody><tr><td>9 &lt; 剩餘秒數 ≤ 10</td><td>200</td></tr><tr><td>8 &lt; 剩餘秒數 ≤ 9</td><td>174.38</td></tr><tr><td>7 &lt; 剩餘秒數 ≤ 8</td><td>149.61</td></tr><tr><td>6 &lt; 剩餘秒數 ≤ 7</td><td>125.75</td></tr><tr><td>5 &lt; 剩餘秒數 ≤ 6</td><td>102.9</td></tr><tr><td>4 &lt; 剩餘秒數 ≤ 5</td><td>81.17</td></tr><tr><td>3 &lt; 剩餘秒數 ≤ 4</td><td>60.72</td></tr><tr><td>2 &lt; 剩餘秒數 ≤ 3</td><td>41.76</td></tr><tr><td>1 &lt; 剩餘秒數 ≤ 2</td><td>24.64</td></tr><tr><td>0 &lt; 剩餘秒數 ≤ 1</td><td>10</td></tr></tbody></table><p>答對第 1 題不加成；連對 2 題 ×1.05，3 題 ×1.10，之後每題再加 0.05。答錯或逾時歸零。</p><p>當題得分＝基礎分 × 連對倍率 × 魔王倍率，取小數點後 2 位。第 10 題 ×3；答錯或剩 0 秒為 0 分。</p></details><details class="vc-network-advanced" id="networkAdvanced"><summary>連線設定</summary><p id="networkModeInfo">連線方式：直連</p><label for="relayUrlInput">中繼伺服器網址（選填）</label><input autocomplete="off" id="relayUrlInput" placeholder="wss://你的伺服器/ws" spellcheck="false" type="url"/><p>留白使用直連；使用中繼時，雙方填入同一個網址。</p><p id="settingsLockHint"></p><details id="connectionHelp"><summary>使用說明</summary><p>直連可能受防火牆限制；無法連線時，可改用自行部署的中繼伺服器。</p><p>房主請保持頁面開啟。短暫斷線保留 30 秒；關閉或重整頁面不保證能恢復。</p><p>雙方答完或時間到後同步結算。以房主或伺服器收到答案的時間計分，網路延遲會影響得分。</p><p>內嵌頁面受限時，請改在獨立分頁開啟。</p><p>中繼網址請使用 ws:// 或 wss://，不是 Firebase 網址或 API 金鑰。設定能否保留依瀏覽器儲存權限而定。</p></details></details><button class="vc-primary" id="saveSettingsBtn" onclick="saveConnectionSettings()" type="button">完成</button></div></dialog>
+<p id="hapticsSupportHint"></p><button class="vc-feedback-test" onclick="testAnswerFeedback()" type="button">測試回饋</button><p id="feedbackTestStatus" role="status"></p></section><div class="v2-motion-control"><label for="v2MotionPreference">介面動態<small>不影響計時與音效</small></label><select id="v2MotionPreference"><option value="auto">跟隨系統</option><option value="off">關閉動態</option></select></div><details class="vc-score-rules" id="scoreRules"><summary>計分規則 </summary><p>先看題目 2 秒；選項出現後，才開始 10 秒作答。</p><p>每秒一個區間，非等差遞減。第一秒內答對的基礎分為 200 分。</p><table aria-label="時間計分區間"><thead><tr><th>剩餘時間</th><th>基礎分</th></tr></thead><tbody><tr><td>9 &lt; 剩餘秒數 ≤ 10</td><td>200</td></tr><tr><td>8 &lt; 剩餘秒數 ≤ 9</td><td>174.38</td></tr><tr><td>7 &lt; 剩餘秒數 ≤ 8</td><td>149.61</td></tr><tr><td>6 &lt; 剩餘秒數 ≤ 7</td><td>125.75</td></tr><tr><td>5 &lt; 剩餘秒數 ≤ 6</td><td>102.9</td></tr><tr><td>4 &lt; 剩餘秒數 ≤ 5</td><td>81.17</td></tr><tr><td>3 &lt; 剩餘秒數 ≤ 4</td><td>60.72</td></tr><tr><td>2 &lt; 剩餘秒數 ≤ 3</td><td>41.76</td></tr><tr><td>1 &lt; 剩餘秒數 ≤ 2</td><td>24.64</td></tr><tr><td>0 &lt; 剩餘秒數 ≤ 1</td><td>10</td></tr></tbody></table><p>答對第 1 題不加成；連對 2 題 ×1.05，3 題 ×1.10，之後每題再加 0.05。答錯或逾時歸零。</p><p>當題得分＝基礎分 × 連對倍率 × 魔王倍率，取小數點後 2 位。第 10 題 ×3；答錯或剩 0 秒為 0 分。</p></details><details class="vc-network-advanced" id="networkAdvanced"><summary>連線設定</summary><p id="networkModeInfo">連線方式：直連</p><label for="relayUrlInput">中繼伺服器網址（選填）</label><input autocomplete="off" id="relayUrlInput" placeholder="wss://你的伺服器/ws" spellcheck="false" type="url"/><p>留白使用直連；使用中繼時，雙方填入同一個網址。</p><p id="settingsLockHint"></p><details id="connectionHelp"><summary>使用說明</summary><p>直連可能受防火牆限制；無法連線時，可改用自行部署的中繼伺服器。</p><p>房主請保持頁面開啟。短暫斷線保留 30 秒；關閉或重整頁面不保證能恢復。</p><p>雙方答完或時間到後同步結算。以房主或伺服器收到答案的時間計分，網路延遲會影響得分。</p><p>內嵌頁面受限時，請改在獨立分頁開啟。</p><p>中繼網址請使用 ws:// 或 wss://，不是 Firebase 網址或 API 金鑰。設定能否保留依瀏覽器儲存權限而定。</p></details></details><details id="appInstallHelp"><summary>安裝成 App</summary><p id="appDisplayStatus" role="status"></p><p id="appInstallSteps"></p><button type="button" id="appInstallBtn" hidden>安裝 VOCABCLASH</button><p id="appInstallFeedback" role="status" hidden></p><a id="appOpenPage" href="./" target="_blank" rel="noopener" hidden>開啟獨立網頁</a><a id="appIconCheck" href="./logo-check.html" target="_blank" rel="noopener">檢查圖示與設定</a></details><button class="vc-primary" id="saveSettingsBtn" onclick="saveConnectionSettings()" type="button">完成</button></div></dialog>
 <dialog aria-labelledby="leaveConfirmTitle" id="leaveConfirmDialog"><h3 id="leaveConfirmTitle">確定離開對戰？</h3><p>本局將中止，不計勝負。</p><div><button id="cancelLeaveBtn" onclick="cancelLeaveToLobby()" type="button">繼續對戰</button><button id="confirmLeaveBtn" onclick="confirmLeaveToLobby()" type="button">返回大廳</button></div></dialog>
 <footer class="vc-footer">VOCAB CLASH<span>單字、片語與流行語</span></footer>
 <dialog aria-labelledby="wrongBookTitle" id="wrongBookDialog">
@@ -4391,8 +4809,8 @@ function fitTarget(stage){
 function position(refit=true){
  if(!active||!dialog.open)return;
  const v=viewport(),pad=v.w<600?10:18,gap=14;
- const side=v.w>=980||(v.w>=620&&v.w>v.h*1.25);
- const pw=side?clamp(v.w*.34,280,360):v.w-pad*2;
+ const side=v.w>=980||(v.w>=520&&v.w>v.h*1.25);
+ const pw=side?clamp(v.w*.34,v.w<620?250:280,360):v.w-pad*2;
  panel.style.width=csspx(pw);
  panel.style.maxHeight=csspx(side?v.h-pad*2:Math.min(v.h*.48,v.h-150-pad*3));
  document.body.dataset.tourLayout=side?'side':'dock';
@@ -4592,4 +5010,47 @@ syncMotion();
 if(enabled())motion(document.querySelector('.vc-logo'),[{transform:'rotate(-12deg) scale(.9)'},{transform:'rotate(-5deg) scale(1)'}],360);
 window.VocabV2Visual=Object.freeze({version:'2.0',get motion(){return body.dataset.v2Motion;},get activeEffects(){return active.size;},get counters(){return {...counters};},cancel:cancelAll});
 })();
-</script></body></html>
+</script><script id="vocab-install-helper">/* Installation guidance only: no game, identity or learning-storage changes. */
+(function(){
+'use strict';
+const L={"standalone": "\u76ee\u524d\u70ba\u7368\u7acb\u8996\u7a97", "preview": "\u9810\u89bd\u6a21\u5f0f", "browser": "\u76ee\u524d\u70ba\u700f\u89bd\u5668\u5206\u9801", "local": "\u8acb\u5148\u4e0a\u50b3\u5b8c\u6574\u4e0a\u67b6\u5305\uff0c\u518d\u5f9e\u6b63\u5f0f HTTPS \u904a\u6232\u7db2\u5740\u52a0\u5165\u4e3b\u756b\u9762\u3002\u672c\u6a5f HTML \u53ea\u7528\u65bc\u9810\u89bd\u3002", "running": "\u4f60\u6b63\u5f9e\u7368\u7acb\u8996\u7a97\u4f7f\u7528\u904a\u6232\uff0c\u4e0d\u9700\u91cd\u8907\u5b89\u88dd\u3002", "frame": "\u8acb\u5148\u958b\u555f\u7368\u7acb\u904a\u6232\u7db2\u9801\uff0c\u518d\u7528 Safari \u6216 Chrome \u52a0\u5165\u4e3b\u756b\u9762\u3002\u4e0d\u8981\u5b89\u88dd Google Sites \u5916\u5c64\u9801\u9762\u3002", "inapp": "\u8acb\u5148\u5f9e App \u5167\u700f\u89bd\u5668\u6539\u7528 Safari \u958b\u555f\u3002", "apple": "Safari \u300c\u5206\u4eab\u300d\u2192\u300c\u52a0\u5165\u4e3b\u756b\u9762\u300d\u3002\u82e5\u6709\u300c\u6253\u958b\u70ba\u7db2\u9801 App\u300d\uff0c\u8acb\u958b\u555f\uff0c\u518d\u9ede\u300c\u52a0\u5165\u300d\u3002\u4e4b\u5f8c\u5f9e\u4e3b\u756b\u9762\u5716\u793a\u555f\u52d5\u3002", "android": "\u5728 Chrome \u9078\u55ae\u9078\u300c\u5b89\u88dd\u61c9\u7528\u7a0b\u5f0f\u300d\u6216\u300c\u52a0\u5165\u4e3b\u756b\u9762\u300d\uff1b\u82e5\u6709\u5b89\u88dd\u8207\u6377\u5f91\u9078\u9805\uff0c\u8acb\u9078\u5b89\u88dd\u3002\u5b8c\u6210\u5f8c\u5f9e\u5716\u793a\u555f\u52d5\u3002", "desktop": "\u4f7f\u7528 Chrome \u6216 Edge \u7684\u5b89\u88dd\u9078\u9805\uff1bMac \u7684 Safari \u53ef\u4f7f\u7528\u300c\u52a0\u5165 Dock\u300d\u3002\u4e00\u822c\u66f8\u7c64\u4e0d\u7b49\u65bc\u7368\u7acb App\uff0c\u9078\u55ae\u540d\u7a31\u4f9d\u700f\u89bd\u5668\u7248\u672c\u800c\u7570\u3002", "accepted": "\u5b89\u88dd\u6d41\u7a0b\u5df2\u78ba\u8a8d\uff0c\u8acb\u5f9e\u65b0\u5716\u793a\u958b\u555f\u4e26\u78ba\u8a8d\u7368\u7acb\u8996\u7a97\u3002", "confirm": "\u8acb\u5728\u700f\u89bd\u5668\u7684\u5b89\u88dd\u8996\u7a97\u78ba\u8a8d\u3002", "dismissed": "\u5df2\u53d6\u6d88\uff1b\u4e4b\u5f8c\u4ecd\u53ef\u5f9e\u700f\u89bd\u5668\u9078\u55ae\u5b89\u88dd\u3002", "failed": "\u7121\u6cd5\u958b\u555f\u5b89\u88dd\u8996\u7a97\uff0c\u8acb\u4f9d\u4e0a\u65b9\u6b65\u9a5f\u4f7f\u7528\u700f\u89bd\u5668\u9078\u55ae\u3002"};
+const $=id=>document.getElementById(id),help=$('appInstallHelp');if(!help)return;
+const mode=window.matchMedia('(display-mode: standalone)'),preview=!!document.querySelector('meta[name="vocab-preview"]');
+let offer=null,installing=false;
+function framed(){try{return window.self!==window.top;}catch(_){return true;}}
+function standalone(){return mode.matches||navigator.standalone===true;}
+function refresh(){
+ const local=preview||!/^https?:$/.test(location.protocol),embedded=framed();
+ const ua=navigator.userAgent,apple=/iPhone|iPad|iPod/i.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+ const inApp=/Line\/|FBAN|FBAV|Instagram/i.test(ua);
+ $('appDisplayStatus').textContent=standalone()?L.standalone:local?L.preview:L.browser;
+ let instruction='';
+ if(local)instruction=L.local;
+ else if(standalone())instruction=L.running;
+ else if(embedded)instruction=L.frame;
+ else if(apple)instruction=(inApp?L.inapp:'')+L.apple;
+ else if(/Android/i.test(ua))instruction=L.android;
+ else instruction=L.desktop;
+ $('appInstallSteps').textContent=instruction;
+ $('appInstallBtn').hidden=!offer||standalone()||local||embedded;
+ $('appInstallBtn').disabled=installing;
+ $('appIconCheck').hidden=local||embedded;
+ $('appOpenPage').hidden=local||!embedded;
+ if(!local)$('appOpenPage').href=new URL('./',location.href).href;
+}
+window.addEventListener('beforeinstallprompt',event=>{event.preventDefault();offer=event;refresh();});
+window.addEventListener('appinstalled',()=>{offer=null;refresh();$('appInstallFeedback').hidden=false;$('appInstallFeedback').textContent=L.accepted;});
+$('appInstallBtn').addEventListener('click',async()=>{
+ const current=offer;if(!current||installing)return;installing=true;refresh();
+ const result=$('appInstallFeedback');result.hidden=false;result.textContent=L.confirm;
+ try{await current.prompt();const choice=await current.userChoice;result.textContent=choice?.outcome==='accepted'?L.accepted:L.dismissed;}
+ catch(_){result.textContent=L.failed;}
+ finally{offer=null;installing=false;refresh();}
+});
+help.addEventListener('toggle',refresh);
+window.addEventListener('pageshow',refresh);
+if(mode.addEventListener)mode.addEventListener('change',refresh);else if(mode.addListener)mode.addListener(refresh);
+refresh();
+})();
+</script>
+</body></html>

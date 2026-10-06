@@ -1,0 +1,51 @@
+{
+  "release": "vc-app-r2",
+  "summary": {
+    "structural": {
+      "passed": 21,
+      "total": 21
+    },
+    "http": {
+      "passed": 28,
+      "total": 28
+    },
+    "layouts": {
+      "passed": 13,
+      "total": 13
+    },
+    "tour": {
+      "passed": 78,
+      "total": 78
+    },
+    "features": {
+      "passed": 10,
+      "total": 10
+    }
+  },
+  "solo_smoke": {
+    "starts": true,
+    "timer": "10.0s",
+    "click_sent": true,
+    "advances": true,
+    "returns_to_lobby": true
+  },
+  "preservation": {
+    "baseline_sha256": "f6b7721176a298a911b97994d1c0362e25bba0931abf1184cc2541c611acdce4",
+    "release_sha256": "3a6a91fce79438e544ac14779d7ecbd89c0f5e8b8f53b17063a4bac244eb5634",
+    "original_scripts_preserved": 14,
+    "added_scripts": 1,
+    "lobby_wordmark": "VOCABCLASH",
+    "lobby_images": 0,
+    "manifest_identity": "./",
+    "no_service_worker_added": true
+  },
+  "browser_method": "Playwright set_content with actual self-contained preview HTML; normal URL navigation is blocked by administrator.",
+  "not_tested": [
+    "OS installation",
+    "physical iPhone/iPad/Android",
+    "public GitHub Pages",
+    "cross-network P2P",
+    "browser restart/disk IndexedDB persistence"
+  ],
+  "method_note": "Initial demo-step assertions incorrectly compared the explanation card with the full-viewport dimming backdrop. The 18 demo cases were rerun measuring the visible #tourDemo instead; original measurements are retained in the working logs. No app code change was required."
+}
