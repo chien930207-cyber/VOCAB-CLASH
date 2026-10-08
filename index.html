@@ -2387,6 +2387,32 @@ html[data-vc-splash="active"] body{overflow:hidden!important}
 }
 
 </style>
+<style id="vocab-full-reset-style">
+/* Scoped full-site reset controls. No changes to gameplay, header or home layout. */
+#vcFormatSettings{border-top:1px solid var(--vd-line,#33445c);margin-top:20px;padding-top:20px}
+#vcFormatSettings h4{font-size:15px;font-weight:700;color:#eef3fc;margin:0 0 7px}
+#vcFormatSettings p{margin:0 0 12px}
+#vcFormatSettings #resetAiHistoryBtn{min-height:44px;border:1px solid #9a5268;border-radius:10px;background:#321b2a;color:#ffd9e2;font:650 14px/1.5 var(--vd-body,sans-serif);padding:10px 18px;cursor:pointer}
+#vcFormatSettings #resetAiHistoryBtn:disabled{opacity:.5;cursor:not-allowed}
+#vcFormatSettings #vcFormatLock{margin-top:9px;color:#ffdca6}
+#vcFormatDialog{box-sizing:border-box;width:min(480px,calc(100vw - 28px));max-width:480px;max-height:calc(100dvh - 28px);margin:auto;padding:26px;background:#0c162d;border:1px solid #85536b;border-top:3px solid #ef9aae;border-radius:20px;color:#e6eef9;box-shadow:0 24px 80px #02071ebb;overflow-y:auto;overscroll-behavior:contain;font-family:var(--vd-body,sans-serif)}
+#vcFormatDialog:not([open]){display:none}#vcFormatDialog::backdrop{background:#020719c9}
+#vcFormatDialog h2{font-size:23px;line-height:1.45;font-weight:750;margin:0 0 15px;text-wrap:balance;color:#f9f3f6}
+#vcFormatDialog p{font-size:15px;line-height:1.75;margin:0 0 13px;overflow-wrap:anywhere}
+#vcFormatDialog #vcFormatWarning{color:#ffbace;font-weight:650}
+#vcFormatDialog :is(#vcFormatScope,#vcFormatTabs){font-size:13px;line-height:1.65;color:#b9c6dc}
+#vcFormatDialog #vcFormatStatus{font-size:14px;margin-top:12px;padding:11px 12px;background:#14243d;border-radius:10px;color:#dceaff}
+#vcFormatDialog[data-state=error] #vcFormatStatus{color:#ffd8bd;background:#362321}
+#vcFormatDialog .vc-format-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:21px}
+#vcFormatDialog button{min-height:48px;border-radius:11px;border:1px solid #506380;padding:11px 12px;font:650 15px/1.5 var(--vd-body,sans-serif);background:#1c2c45;color:#edf4ff;cursor:pointer;touch-action:manipulation;transition:background .15s}
+#vcFormatDialog #vcFormatConfirm{background:#ad3558;border-color:#e786a1;color:#fff}
+#vcFormatDialog button:disabled{opacity:.58;cursor:wait}
+#vcFormatDialog button:focus-visible,#vcFormatSettings button:focus-visible{outline:3px solid #a5e7ff;outline-offset:3px}
+#vcFormatDialog [hidden],#vcFormatSettings [hidden]{display:none!important}
+@media(hover:hover){#vcFormatDialog button:not(:disabled):hover{filter:brightness(1.12)}}
+@media(max-width:380px){#vcFormatDialog{padding:21px 19px}#vcFormatDialog h2{font-size:21px}#vcFormatDialog p{font-size:14px}}
+@media(prefers-reduced-motion:reduce){#vcFormatDialog button{transition:none}}
+</style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-black vc-refined vc-v2 vc-neon" data-visual-version="2.0" data-logo-design="neon-r1" data-design-version="4.4.0" data-view="lobby">
 <!-- Startup brand screen. Hidden when JavaScript is unavailable. -->
@@ -2795,14 +2821,14 @@ try{
 <div class="vc-music-volume"><label for="battleMusicVolume">音樂音量</label><output id="battleMusicVolumeValue" for="battleMusicVolume">25%</output><input id="battleMusicVolume" type="range" min="0" max="100" step="1" value="25" aria-label="音樂音量"></div>
 <p id="battleMusicStatus" role="status" aria-live="polite">好友與 AI 對戰時播放</p><p class="vc-learn-note">優先播放本站音檔；讀不到時，嘗試作者公開的線上音檔。</p>
 <details class="vc-music-credits"><summary>曲目與來源</summary><p>已移除舊合成備用曲，改用以下遊戲配樂。優先讀取本站音檔，缺檔時嘗試作者公開的線上音檔。</p><ol><li><a href="https://opengameart.org/content/hopeorchestral-battle-music" target="_blank" rel="noopener noreferrer">Hope</a>｜MintoDog</li><li><a href="https://opengameart.org/content/jrpg-epic-rock-battle-theme-1" target="_blank" rel="noopener noreferrer">JRPG Epic Rock Battle Theme #1</a>｜HydroGene</li><li><a href="https://opengameart.org/content/boss-battle-music" target="_blank" rel="noopener noreferrer">Epic Boss Battle</a>｜Juhani Junkala / SubspaceAudio</li><li><a href="https://opengameart.org/content/battle-theme-0" target="_blank" rel="noopener noreferrer">Battle Theme</a>｜Wolfgang_</li><li><a href="https://opengameart.org/content/the-final-battle" target="_blank" rel="noopener noreferrer">The Final Battle</a>｜skrjablin</li></ol><p>來源頁標示 <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener noreferrer">CC0 1.0</a>。本次更新包未包含原曲檔案，線上播放可能受來源網站、網路或瀏覽器限制。正式使用請把原曲放到 music/battle-r2/。</p><p>每局固定一首，只在對戰中播放。本站音軌使用音量平衡與輕微高頻衰減；直接線上串流僅調整播放音量。不改變旋律或速度。</p><p>線上音檔由 OpenGameArt 提供，讀取時會傳送一般網路請求資訊。作者與本遊戲沒有合作或代言關係。</p></details>
-</section><div class="v2-motion-control"><label for="v2MotionPreference">介面動態<small>不影響計時與音效</small></label><select id="v2MotionPreference"><option value="auto">跟隨系統</option><option value="off">關閉動態</option></select></div><details class="vc-score-rules" id="scoreRules"><summary>計分規則 </summary><p>先看題目 2 秒；選項出現後，才開始 10 秒作答。</p><p>第一秒內答對得 200 基礎分，之後每秒降一級。各級分差不同，詳見下表。</p><table aria-label="時間計分區間"><thead><tr><th>剩餘時間</th><th>基礎分</th></tr></thead><tbody><tr><td>9 &lt; 剩餘秒數 ≤ 10</td><td>200</td></tr><tr><td>8 &lt; 剩餘秒數 ≤ 9</td><td>174.38</td></tr><tr><td>7 &lt; 剩餘秒數 ≤ 8</td><td>149.61</td></tr><tr><td>6 &lt; 剩餘秒數 ≤ 7</td><td>125.75</td></tr><tr><td>5 &lt; 剩餘秒數 ≤ 6</td><td>102.9</td></tr><tr><td>4 &lt; 剩餘秒數 ≤ 5</td><td>81.17</td></tr><tr><td>3 &lt; 剩餘秒數 ≤ 4</td><td>60.72</td></tr><tr><td>2 &lt; 剩餘秒數 ≤ 3</td><td>41.76</td></tr><tr><td>1 &lt; 剩餘秒數 ≤ 2</td><td>24.64</td></tr><tr><td>0 &lt; 剩餘秒數 ≤ 1</td><td>10</td></tr></tbody></table><p>第 1 題答對不加成；連續答對 2 題 ×1.05，3 題 ×1.10，之後每多一題加 0.05。答錯或時間到會中斷連對，不扣已得分數。</p><p>當題得分＝基礎分 × 連對倍率 × 第 10 題倍率，四捨五入至小數點後 2 位。第 10 題為 3 倍；答錯或時間到得 0 分。</p></details><details class="vc-network-advanced" id="networkAdvanced"><summary>連線設定</summary><p id="networkModeInfo">連線方式：直接連線</p><label for="relayUrlInput">中繼伺服器網址（選填）</label><input autocomplete="off" id="relayUrlInput" placeholder="wss://你的伺服器/ws" spellcheck="false" type="url"/><p>留白即可直接連線。使用中繼伺服器時，雙方請填入同一個網址。</p><p id="settingsLockHint"></p><details id="connectionHelp"><summary>使用說明</summary><p>網路或防火牆可能阻擋直接連線。連不上時，可請網站管理者提供中繼伺服器網址。</p><p>房主請保持遊戲畫面開啟。斷線後最多等候 30 秒；關閉或重新整理網頁，可能無法回到原房間。</p><p>兩人都答完或時間到後，一起公布答案。分數以房主或伺服器收到答案的時間計算，網路延遲可能影響得分。</p><p>嵌入其他網站的遊戲若無法正常使用，請改用新分頁直接開啟遊戲。</p><p>請填入以 ws:// 或 wss:// 開頭的中繼網址，不是 Firebase 網址或 API 金鑰。瀏覽器允許儲存時，才會記住設定。</p></details></details><section id="aiHistorySettings"><h4>歷史對戰大比分</h4><p id="aiHistorySummary"></p><p id="aiHistoryStorage"></p><button type="button" id="resetAiHistoryBtn" aria-label="格式化 AI 歷史戰績">格式化</button><div id="resetAiHistoryConfirm" hidden><p>確定格式化 AI 歷史戰績？戰績將歸零，單字庫與學習紀錄保留。</p><button id="cancelAiHistoryBtn" type="button">取消</button> <button id="confirmAiHistoryBtn" type="button">確定格式化</button></div></section><details id="appInstallHelp"><summary>分享與安裝 <span class="vc-new">NEW</span></summary>
+</section><div class="v2-motion-control"><label for="v2MotionPreference">介面動態<small>不影響計時與音效</small></label><select id="v2MotionPreference"><option value="auto">跟隨系統</option><option value="off">關閉動態</option></select></div><details class="vc-score-rules" id="scoreRules"><summary>計分規則 </summary><p>先看題目 2 秒；選項出現後，才開始 10 秒作答。</p><p>第一秒內答對得 200 基礎分，之後每秒降一級。各級分差不同，詳見下表。</p><table aria-label="時間計分區間"><thead><tr><th>剩餘時間</th><th>基礎分</th></tr></thead><tbody><tr><td>9 &lt; 剩餘秒數 ≤ 10</td><td>200</td></tr><tr><td>8 &lt; 剩餘秒數 ≤ 9</td><td>174.38</td></tr><tr><td>7 &lt; 剩餘秒數 ≤ 8</td><td>149.61</td></tr><tr><td>6 &lt; 剩餘秒數 ≤ 7</td><td>125.75</td></tr><tr><td>5 &lt; 剩餘秒數 ≤ 6</td><td>102.9</td></tr><tr><td>4 &lt; 剩餘秒數 ≤ 5</td><td>81.17</td></tr><tr><td>3 &lt; 剩餘秒數 ≤ 4</td><td>60.72</td></tr><tr><td>2 &lt; 剩餘秒數 ≤ 3</td><td>41.76</td></tr><tr><td>1 &lt; 剩餘秒數 ≤ 2</td><td>24.64</td></tr><tr><td>0 &lt; 剩餘秒數 ≤ 1</td><td>10</td></tr></tbody></table><p>第 1 題答對不加成；連續答對 2 題 ×1.05，3 題 ×1.10，之後每多一題加 0.05。答錯或時間到會中斷連對，不扣已得分數。</p><p>當題得分＝基礎分 × 連對倍率 × 第 10 題倍率，四捨五入至小數點後 2 位。第 10 題為 3 倍；答錯或時間到得 0 分。</p></details><details class="vc-network-advanced" id="networkAdvanced"><summary>連線設定</summary><p id="networkModeInfo">連線方式：直接連線</p><label for="relayUrlInput">中繼伺服器網址（選填）</label><input autocomplete="off" id="relayUrlInput" placeholder="wss://你的伺服器/ws" spellcheck="false" type="url"/><p>留白即可直接連線。使用中繼伺服器時，雙方請填入同一個網址。</p><p id="settingsLockHint"></p><details id="connectionHelp"><summary>使用說明</summary><p>網路或防火牆可能阻擋直接連線。連不上時，可請網站管理者提供中繼伺服器網址。</p><p>房主請保持遊戲畫面開啟。斷線後最多等候 30 秒；關閉或重新整理網頁，可能無法回到原房間。</p><p>兩人都答完或時間到後，一起公布答案。分數以房主或伺服器收到答案的時間計算，網路延遲可能影響得分。</p><p>嵌入其他網站的遊戲若無法正常使用，請改用新分頁直接開啟遊戲。</p><p>請填入以 ws:// 或 wss:// 開頭的中繼網址，不是 Firebase 網址或 API 金鑰。瀏覽器允許儲存時，才會記住設定。</p></details></details><section id="aiHistorySettings"><h4>歷史對戰大比分</h4><p id="aiHistorySummary"></p><p id="aiHistoryStorage"></p></section><details id="appInstallHelp"><summary>分享與安裝 <span class="vc-new">NEW</span></summary>
 <div class="vc-engagement-actions"><button type="button" id="vcShareAccess">分享給朋友</button><button type="button" id="appInstallBtn">安裝到電腦</button></div>
 <p id="vcInstallCapability" class="vc-engagement-note" role="status"></p>
 <p id="vcReminderLock" class="vc-engagement-note" role="status"></p>
 <details id="appInstallManual"><summary>安裝方式</summary><p id="appDisplayStatus" role="status"></p><p id="appInstallSteps"></p><p class="vc-engagement-note">安裝 App 不會自動備份學習紀錄，重要資料請另外匯出。</p><p hidden id="appInstallFeedback" role="status"></p><a hidden href="./" id="appOpenPage" rel="noopener noreferrer" target="_blank">開啟獨立遊戲頁面</a><a href="./logo-check.html" id="appIconCheck" rel="noopener" target="_blank">檢查圖示與設定</a></details>
 <details hidden id="vcReminderTests"><summary>提醒測試</summary><p>每天累計使用第 5 分鐘新增 App，第 10 分鐘分享，各提醒一次。測試不影響當天紀錄。</p>
 <div class="vc-test-grid"><button type="button" id="vcTestShare">預覽分享提醒</button><button type="button" id="vcTestInstall">預覽安裝提醒</button><button type="button" id="vcTestDue">模擬到提醒時間</button><button type="button" id="vcTestReset">重播測試提醒</button></div>
-<p id="vcReminderClock" style="white-space:pre-line"></p><p id="vcReminderStorage"></p><div id="vcPreviewURLRow"><label for="vcTestURL">正式遊戲網址（本機預覽選填）</label><input type="url" inputmode="url" id="vcTestURL" autocomplete="url" spellcheck="false" placeholder="https://..." aria-describedby="vcReminderTestStatus"><button type="button" id="vcTestSaveURL">使用這個網址</button></div><p id="vcReminderTestStatus" role="status"></p></details></details><button class="vc-primary" id="saveSettingsBtn" onclick="saveConnectionSettings()" type="button">完成</button></div></dialog>
+<p id="vcReminderClock" style="white-space:pre-line"></p><p id="vcReminderStorage"></p><div id="vcPreviewURLRow"><label for="vcTestURL">正式遊戲網址（本機預覽選填）</label><input type="url" inputmode="url" id="vcTestURL" autocomplete="url" spellcheck="false" placeholder="https://..." aria-describedby="vcReminderTestStatus"><button type="button" id="vcTestSaveURL">使用這個網址</button></div><p id="vcReminderTestStatus" role="status"></p></details></details><section id="vcFormatSettings" aria-labelledby="vcFormatHeading"><h4 id="vcFormatHeading">格式化網站資料</h4><p>清除這個瀏覽器的學習紀錄與設定，恢復初始狀態。</p><button type="button" id="resetAiHistoryBtn" aria-haspopup="dialog" aria-controls="vcFormatDialog" aria-label="格式化 VOCAB CLASH 所有本機資料">格式化</button><p id="vcFormatLock" role="status" hidden></p></section><button class="vc-primary" id="saveSettingsBtn" onclick="saveConnectionSettings()" type="button">完成</button></div></dialog>
 <dialog aria-labelledby="leaveConfirmTitle" id="leaveConfirmDialog"><h3 id="leaveConfirmTitle">確定離開對戰？</h3><p>離開後這局就會結束，不計勝負。</p><div><button id="cancelLeaveBtn" onclick="cancelLeaveToLobby()" type="button">繼續對戰</button><button id="confirmLeaveBtn" onclick="confirmLeaveToLobby()" type="button">返回大廳</button></div></dialog>
 <footer class="vc-footer">VOCAB CLASH<span>單字、片語與流行語</span></footer>
 <dialog aria-labelledby="wrongBookTitle" id="wrongBookDialog">
@@ -3855,8 +3881,9 @@ class Notebook{
   try {this.persistent=(await this.storage.persist())===true;this.notify();}catch(_){}
   return this.persistent;
  }
- enqueue(operation){
-  const next=this.pending.then(operation);
+  enqueue(operation){
+   if(globalThis.VocabFullReset?.active)return Promise.resolve(null);
+   const next=this.pending.then(()=>globalThis.VocabFullReset?.active?null:operation());
   // Failed operations do not poison later writes or block the game.
   this.pending=next.catch(()=>{});return next;
  }
@@ -4106,7 +4133,7 @@ class Progress{
   this.cache.clear();for(const r of rows){try{const e=valid(r);this.cache.set(e.id,e);}catch(_){this.reason='some-data-unreadable';}}
  }
  tx(){try{return this.db.transaction(STORE,'readwrite',{durability:'strict'});}catch(_){return this.db.transaction(STORE,'readwrite');}}
- enqueue(fn){const p=this.pending.then(fn);this.pending=p.catch(()=>{});return p;}
+  enqueue(fn){if(globalThis.VocabFullReset?.active)return Promise.resolve(false);const p=this.pending.then(()=>globalThis.VocabFullReset?.active?false:fn());this.pending=p.catch(()=>{});return p;}
  record(raw){
   if(!raw)return Promise.resolve(false);const e=valid(raw);
   return this.enqueue(async()=>{
@@ -4255,6 +4282,7 @@ class Store {
   this.db.onversionchange=()=>{this.db.close();this.db=null;this.mode='memory';};this.mode='local';
  }catch(_){this.mode='memory';}}
  transaction(key,change){const op=async()=>{await this.ready;
+  if(root.VocabFullReset?.active)throw Error('Application reset in progress');
   if(!this.db){const x=change(this.mem.get(key));if(x.value)this.mem.set(key,clone(x.value));if(x.remove)this.mem.delete(key);return x.result;}
   return new Promise((resolve,reject)=>{let result,tx;try{tx=this.db.transaction(this.store,'readwrite',{durability:'strict'});}catch(_){tx=this.db.transaction(this.store,'readwrite');}
    const os=tx.objectStore(this.store),q=os.get(key);q.onsuccess=()=>{try{const x=change(q.result);result=x.result;if(x.value)os.put(x.value);if(x.remove)os.delete(key);}catch(e){tx.abort();reject(e);}};
@@ -4364,6 +4392,7 @@ function refreshStats(){
  try{window.dispatchEvent(new Event('vocab-learning-changed'));}catch(_){}
 }
 function capture(s){
+ if(window.VocabFullReset?.active)return;
  progress.capture(s).catch(()=>message('學習紀錄儲存失敗，請備份。'));
  for(const h of s.history||[]){
   const item=W.mistakeFromHistory(s,h);if(!item||captured.has(item.event.id))continue;
@@ -4655,8 +4684,7 @@ $('reviewQuestionsList').addEventListener('click',e=>{
 function fillAnsweredOptions(container,q,word){for(const [i,b]of [...container.children].entries()){const info=optionData(q.options[i],{...q,word},i);const text=info.chinese?(info.word||info.note):info.meaning;
  if(text){const p=document.createElement('small');p.className='vc-review-option-meaning';p.textContent=text;b.append(p);}}}
 function refreshHistory(){const s=history.summary();const el=$('aiHistorySummary');if(el)el.textContent='\u4f60 '+s.wins+' \u52dd\uff0cAI '+s.losses+' \u52dd\uff0c\u5e73\u624b '+s.draws+' \u5834';const status=$('aiHistoryStorage');if(status)status.textContent=s.mode==='memory'?'\u76ee\u524d\u53ea\u80fd\u66ab\u5b58\uff0c\u8acb\u5148\u532f\u51fa\u55ae\u5b57\u5eab\u5099\u4efd\u4ee5\u4fdd\u7559\u6230\u7e3e\u3002':'\u5f9e\u672c\u7248\u958b\u59cb\u7d2f\u8a08\uff0c\u4e0d\u6703\u56e0\u70ba\u96e2\u958b\u5927\u5ef3\u6216\u95dc\u9589\u7db2\u9801\u800c\u6e05\u7a7a\u3002';}
-$('resetAiHistoryBtn').onclick=()=>{$('resetAiHistoryConfirm').hidden=false;};$('cancelAiHistoryBtn').onclick=()=>{$('resetAiHistoryConfirm').hidden=true;};
-$('confirmAiHistoryBtn').onclick=async()=>{const b=$('confirmAiHistoryBtn');b.disabled=true;try{await history.clear();$('resetAiHistoryConfirm').hidden=true;}finally{b.disabled=false;refreshHistory();}};
+// The format button is handled by the full-site reset confirmation module.
 window.addEventListener('vocab-ai-history-changed',refreshHistory);window.addEventListener('focus',()=>history.loaded.then(()=>history.reload()).then(refreshHistory).catch(()=>{}));history.loaded.then(refreshHistory).catch(()=>{});
 window.VocabReview={render,optionData,fillAnsweredOptions,speakCurrent};
 })();
@@ -4689,7 +4717,7 @@ class Controller {
     this.generation=0;this.abort=null;this.status='idle';this.statusKey='';
   }
   read(n){try{return this.storage?.getItem(key(n))??null;}catch(_){return null;}}
-  write(n,v){try{this.storage?.setItem(key(n),String(v));}catch(_){}}
+  write(n,v){if(globalThis.VocabFullReset?.active)return;try{this.storage?.setItem(key(n),String(v));}catch(_){}}
   notify(status){if(status)this.status=status;const value=JSON.stringify([this.status,this.matchId,this.track?.id,this.enabled,this.volume]);
     if(value!==this.statusKey){this.statusKey=value;try{this.onChange(this);}catch(_){}}}
   inMatch(){const s=this.snapshot;return !!s.matchId&&s.view==='game'&&activePhases.has(s.phase);}
@@ -4933,7 +4961,7 @@ const C = VocabCore; const T = VocabTransports; const P = VocabPresentation; con
 const config = {...(window.VOCAB_CLASH_CONFIG || {})};
 const safeStorage = {
   get(key) {try {return localStorage.getItem(key);} catch (_) {return null;}},
-  set(key, value) {try {localStorage.setItem(key, value);} catch (_) {}}
+  set(key, value) {if(window.VocabFullReset?.active)return;try {localStorage.setItem(key, value);} catch (_) {}}
 };
 let recentLexemes = [];
 try {const value = JSON.parse(safeStorage.get('vc3-recent-lexemes') || '[]');
@@ -5929,7 +5957,7 @@ const sessionKey='vc-engagement-r1:'+namespace,installedKey='vc-engagement-insta
 const overrideKey=sessionKey+':preview-url';
 let storageOK=true;
 function get(store,key){try{return window[store].getItem(key);}catch(_){storageOK=false;return null;}}
-function put(store,key,value){try{window[store].setItem(key,value);return true;}catch(_){storageOK=false;return false;}}
+function put(store,key,value){if(window.VocabFullReset?.active)return false;try{window[store].setItem(key,value);return true;}catch(_){storageOK=false;return false;}}
 const schedule=new C.ForegroundSchedule();
 const dailyStore=new window.VocabRetention.DailyStore();
 let dailyReady=false,dailyClaiming=false,dailyLastWall=Date.now(),dailyLastPerf=performance.now(),dailyCounting=false,dailyReadAt=0;
@@ -5952,6 +5980,7 @@ function readableView(){return ['lobby','results'].includes(document.body.datase
 function overlayVisible(){const e=$('connectionOverlay');return !!e&&!e.classList.contains('hidden')&&!e.hidden;}
 function otherModal(allowSettings){return Array.from(document.querySelectorAll('dialog[open]')).some(e=>e!==dialog&&!(allowSettings&&e.id==='settingsDialog'));}
 function safe(allowSettings=false){
+ if(window.VocabFullReset?.active)return false;
  if(document.hidden||suspended||!readableView()||splash()||overlayVisible()||document.body.classList.contains('vc-touring')||otherModal(allowSettings))return false;
  if(document.body.dataset.view==='results'&&$('reviewDetails')?.open)return false;
  if(!allowSettings&&!active&&/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement?.tagName||''))return false;
@@ -5959,6 +5988,7 @@ function safe(allowSettings=false){
 }
 function countable(){return !document.hidden&&!suspended&&!active&&!nativeBusy&&!splash();}
 function sample(){
+ if(window.VocabFullReset?.active)return;
  const now=performance.now(),wall=Date.now(),count=countable();
  if(quickEnabled&&quickStage<2){
   if(quickLast!==null&&quickCounting){const dt=now-quickLast;if(dt>0&&dt<=5000)quickElapsed=Math.min(QUICK_DELAY,quickElapsed+dt);}
@@ -6012,7 +6042,7 @@ function instruction(){
  return {intro:'',steps:L.desktopSteps};
 }
 function tick(){
- pending=false;sample();
+ pending=false;if(window.VocabFullReset?.active)return;sample();
  if(active){if(!safe(!['auto','quick'].includes(active.source)))close('view-change',false);}
  else if(quickEnabled){
   if(quickStage<2&&quickElapsed>=QUICK_DELAY&&safe()){
@@ -6320,11 +6350,16 @@ if(local()&&quickRequested)$('vcQuickEnvironment').open=true;
 window.VocabQuickTest=Object.freeze({preview:previewQuick,replay:resetReminder,stop:endQuick});
 
 function snapshot(){return {...schedule.save(),quick:{enabled:quickEnabled,delayMs:QUICK_DELAY,stage:quickStage,elapsed:quickElapsed,finished:quickStage>=2},intervalMs:C.INTERVAL,popup:active?.kind||'',source:active?.source||'',standalone:standalone(),knownInstalled,canPrompt:nativeInstallReady(),installState:installState().code,testMode,storageOK,shareURL:shareURL(),sessionKey};}
-window.VocabEngagement=Object.freeze({version:'daily-reminders-install-first-r2',snapshot,
+window.VocabEngagement=Object.freeze({version:'daily-reminders-install-first-r2',snapshot,pauseForReset,
  ...(testMode?{preview:k=>show(k,'preview'),makeDue:makeDue,reset:resetReminder}:{})});
 window.VocabInstall=Object.freeze({isStandalone:standalone,canPrompt:nativeInstallReady,open:installFromSettings});
 dailyStore.read().then(record=>{acceptDaily(record);dailyReady=true;dailyLastWall=Date.now();dailyLastPerf=performance.now();dailyCounting=countable()&&!quickEnabled;queue();}).catch(()=>{storageOK=false;});
-setInterval(tick,1000);sample();persist();displayChanged();updateControls();updateQuickControls();queue();
+function pauseForReset(){
+ suspended=true;dailyReady=false;dailyCounting=false;quickEnabled=false;
+ clearInterval(reminderTimer);observer?.disconnect();if(active)close('format',false);
+ return dailyStore;
+}
+const reminderTimer=setInterval(tick,1000);sample();persist();displayChanged();updateControls();updateQuickControls();queue();
 })();
 </script>
 <script id="vocab-home-progress">
@@ -6344,7 +6379,7 @@ const numberNodes=ids.map($);
 let disposed=false,available=false,entered=false,epoch=0,frameId=0,enterTimer=0,refreshTimer=0;
 let readTask=null,data=null,signature='',requestSerial=0,entryCount=0,animationCount=0;
 const effects=new Set();
-function visible(){return !disposed&&!document.hidden&&body.dataset.view==='lobby'&&!$('viewLobby').classList.contains('hidden')&&!body.classList.contains('vc-touring')&&!document.documentElement.hasAttribute('data-vc-splash')&&!document.querySelector('dialog[open]');}
+function visible(){return !window.VocabFullReset?.active&&!disposed&&!document.hidden&&body.dataset.view==='lobby'&&!$('viewLobby').classList.contains('hidden')&&!body.classList.contains('vc-touring')&&!document.documentElement.hasAttribute('data-vc-splash')&&!document.querySelector('dialog[open]');}
 function motionAllowed(){return !reduced.matches&&body.dataset.v2Motion!=='reduce'&&visible();}
 function text(node,value){if(node&&node.textContent!==value)node.textContent=value;}
 function cancelMotion(finish=true){
@@ -6439,6 +6474,191 @@ window.VocabHomeProgress=Object.freeze({version:'home-progress-r1',snapshot:()=>
 synchronize();
 })();
 
+</script>
+<dialog id="vcFormatDialog" role="alertdialog" aria-modal="true" aria-labelledby="vcFormatTitle" aria-describedby="vcFormatBody vcFormatWarning vcFormatScope">
+<h2 id="vcFormatTitle">確定格式化所有資料？</h2>
+<p id="vcFormatBody">將清除 VOCAB CLASH 在此瀏覽器儲存的單字庫與收藏、作答與複習紀錄、AI 歷史戰績、暱稱、所有個人設定及提醒紀錄。</p>
+<p id="vcFormatWarning">此操作無法復原，請先匯出需要的備份。</p>
+<p id="vcFormatScope">不影響 ARCO、TEMPOLIVE 或其他網站；不會刪除題庫、已安裝的 App 或已下載的備份檔。</p>
+<p id="vcFormatTabs">請先關閉其他 VOCAB CLASH 分頁或 App 視窗，避免舊資料寫回。</p>
+<p id="vcFormatStatus" role="status" aria-live="polite" hidden></p>
+<div class="vc-format-actions"><button type="button" id="vcFormatCancel">取消</button><button type="button" id="vcFormatConfirm">確認格式化</button></div>
+</dialog>
+<script id="vocab-full-reset">/* Explicit local reset for VOCAB CLASH only. Never clears the whole origin.
+ * Storage namespaces are audited against this release. ARCO/TEMPOLIVE are excluded.
+ * Uploading/reloading this file does NOT format anything; the confirm click is required.
+ */
+(function(){
+'use strict';
+const M={"section": "\u683c\u5f0f\u5316\u7db2\u7ad9\u8cc7\u6599", "button": "\u683c\u5f0f\u5316", "aria": "\u683c\u5f0f\u5316 VOCAB CLASH \u6240\u6709\u672c\u6a5f\u8cc7\u6599", "intro": "\u6e05\u9664\u9019\u500b\u700f\u89bd\u5668\u7684\u5b78\u7fd2\u7d00\u9304\u8207\u8a2d\u5b9a\uff0c\u6062\u5fa9\u521d\u59cb\u72c0\u614b\u3002", "title": "\u78ba\u5b9a\u683c\u5f0f\u5316\u6240\u6709\u8cc7\u6599\uff1f", "body": "\u5c07\u6e05\u9664 VOCAB CLASH \u5728\u6b64\u700f\u89bd\u5668\u5132\u5b58\u7684\u55ae\u5b57\u5eab\u8207\u6536\u85cf\u3001\u4f5c\u7b54\u8207\u8907\u7fd2\u7d00\u9304\u3001AI \u6b77\u53f2\u6230\u7e3e\u3001\u66b1\u7a31\u3001\u6240\u6709\u500b\u4eba\u8a2d\u5b9a\u53ca\u63d0\u9192\u7d00\u9304\u3002", "warning": "\u6b64\u64cd\u4f5c\u7121\u6cd5\u5fa9\u539f\uff0c\u8acb\u5148\u532f\u51fa\u9700\u8981\u7684\u5099\u4efd\u3002", "scope": "\u4e0d\u5f71\u97ff ARCO\u3001TEMPOLIVE \u6216\u5176\u4ed6\u7db2\u7ad9\uff1b\u4e0d\u6703\u522a\u9664\u984c\u5eab\u3001\u5df2\u5b89\u88dd\u7684 App \u6216\u5df2\u4e0b\u8f09\u7684\u5099\u4efd\u6a94\u3002", "tabs": "\u8acb\u5148\u95dc\u9589\u5176\u4ed6 VOCAB CLASH \u5206\u9801\u6216 App \u8996\u7a97\uff0c\u907f\u514d\u820a\u8cc7\u6599\u5beb\u56de\u3002", "cancel": "\u53d6\u6d88", "confirm": "\u78ba\u8a8d\u683c\u5f0f\u5316", "busy": "\u6b63\u5728\u683c\u5f0f\u5316\u2026", "working": "\u6b63\u5728\u6e05\u9664\u8cc7\u6599\uff0c\u8acb\u4e0d\u8981\u95dc\u9589\u9019\u500b\u8996\u7a97\u3002", "blocked": "\u6709\u5176\u4ed6 VOCAB CLASH \u8996\u7a97\u4ecd\u5728\u4f7f\u7528\u8cc7\u6599\u3002\u8acb\u95dc\u9589\u5176\u4ed6\u5206\u9801\u8207 App\uff0c\u672c\u8996\u7a97\u6703\u7e7c\u7e8c\u5b8c\u6210\u683c\u5f0f\u5316\u3002", "done": "\u683c\u5f0f\u5316\u5b8c\u6210\uff0c\u6b63\u5728\u8fd4\u56de\u4e3b\u9801\u3002", "error": "\u683c\u5f0f\u5316\u5c1a\u672a\u5b8c\u6210\uff0c\u90e8\u5206\u8cc7\u6599\u53ef\u80fd\u5df2\u6e05\u9664\u3002\u8acb\u95dc\u9589\u5176\u4ed6 VOCAB CLASH \u8996\u7a97\u5f8c\u91cd\u8a66\uff1b\u82e5\u4ecd\u5931\u6557\uff0c\u8acb\u78ba\u8a8d\u700f\u89bd\u5668\u5141\u8a31\u672c\u7ad9\u5b58\u53d6\u8cc7\u6599\u3002", "retry": "\u91cd\u8a66\u683c\u5f0f\u5316", "reload": "\u91cd\u65b0\u8f09\u5165", "remoteTitle": "\u5176\u4ed6\u8996\u7a97\u6b63\u5728\u683c\u5f0f\u5316", "remoteBody": "\u70ba\u907f\u514d\u820a\u8cc7\u6599\u5beb\u56de\uff0c\u9019\u500b\u8996\u7a97\u5df2\u66ab\u505c\u4f7f\u7528\u3002\u8acb\u7b49\u5f85\u683c\u5f0f\u5316\u5b8c\u6210\u3002", "remoteDone": "\u8cc7\u6599\u5df2\u683c\u5f0f\u5316\uff0c\u8acb\u91cd\u65b0\u8f09\u5165\u4ee5\u4f7f\u7528\u521d\u59cb\u8a2d\u5b9a\u3002", "remoteError": "\u683c\u5f0f\u5316\u5c1a\u672a\u5b8c\u6210\uff0c\u8acb\u56de\u5230\u958b\u59cb\u683c\u5f0f\u5316\u7684\u8996\u7a97\u91cd\u8a66\u3002", "returnFirst": "\u8acb\u5148\u8fd4\u56de\u4e3b\u9801\uff0c\u518d\u683c\u5f0f\u5316\u8cc7\u6599\u3002"};
+const $=id=>document.getElementById(id),dialog=$('vcFormatDialog');
+if(!dialog)return;
+const SIGNAL='vocab-clash-format-signal-v1',CHANNEL='vocab-clash-format-v1';
+const DB_NAMES=['vocab-clash-learning-v1','vocab-clash-progress-v1','vocab-clash-ai-history-v1','vocab-clash-daily-usage-v1'];
+const sender=globalThis.crypto?.randomUUID?.()||Date.now().toString(36)+'-'+Math.random().toString(36).slice(2);
+let active=false,busy=false,confirmed=false,remote=false,phase='idle',quiesceTask=null,returnFocus=null,channel=null;
+let initialSignal=null;try{initialSignal=localStorage.getItem(SIGNAL);}catch(_){}
+const deletes=new Map();
+function ownsKey(k){return typeof k==='string'&&(/^(?:vocab-clash-|vocabclash[-_:]|vc[234]-)/i.test(k)||/^vc-(?:study-|battle-music-|engagement-)/.test(k));}
+function ownsDB(n){return typeof n==='string'&&/^vocab-clash-/.test(n);}
+function status(text){$('vcFormatStatus').textContent=text;$('vcFormatStatus').hidden=!text;}
+function setPhase(value){phase=value;dialog.dataset.state=value;}
+function showDialog(){if(!dialog.open)dialog.showModal();dialog.scrollTop=0;}
+function signal(state){const data={app:'vocab-clash',version:1,sender,state,at:Date.now()};
+ try{localStorage.setItem(SIGNAL,JSON.stringify(data));}catch(_){}
+ try{channel?.postMessage(data);}catch(_){}
+}
+function purgeStorage(name,preserveSignal=false){
+ const storage=window[name],keys=[];
+ for(let i=0;i<storage.length;i++){const k=storage.key(i);if(ownsKey(k)&&!(preserveSignal&&k===SIGNAL))keys.push(k);}
+ keys.forEach(k=>storage.removeItem(k));
+ for(const k of keys)if(storage.getItem(k)!==null)throw Error('Storage deletion was not confirmed');
+ return keys.length;
+}
+async function quiesce(){
+ if(quiesceTask)return quiesceTask;
+ // Set the fence before closing a game. Closing must not write recent words back.
+ active=true;
+ quiesceTask=(async()=>{
+  const daily=window.VocabEngagement?.pauseForReset?.();
+  try{window.confirmLeaveToLobby?.();}catch(_){}
+  try{window.VocabLearning?.stopPronunciation?.();window.speechSynthesis?.cancel();}catch(_){}
+  try{window.VocabBattleMusic?.stop();window.VocabV2Visual?.cancel?.();}catch(_){}
+  for(const d of document.querySelectorAll('dialog[open]'))if(d!==dialog)try{d.close();}catch(_){}
+  const owners=[window.VocabLearning?.book,window.VocabLearning?.progress,window.VocabAIHistory,daily].filter(Boolean);
+  // Let already-started transactions finish; new queued writes are fenced.
+  for(const store of owners){for(const p of [store.ready,store.loaded,store.pending])try{await p;}catch(_){}
+   try{store.db?.close();}catch(_){}store.db=null;
+   store.cache?.clear();store.mem?.clear();
+  }
+  return owners;
+ })();
+ return quiesceTask;
+}
+function deleteDB(name){
+ if(deletes.has(name))return deletes.get(name);
+ const task=new Promise((resolve,reject)=>{
+  let request;
+  try{request=window.indexedDB.deleteDatabase(name);}catch(e){reject(e);return;}
+  request.onsuccess=()=>resolve(name);
+  request.onerror=()=>{deletes.delete(name);reject(request.error||Error('Database deletion failed'));};
+  // Keep the original request alive; it resumes when the other connection closes.
+  // There is no fake timeout-success and no hidden retry that deletes later.
+  request.onblocked=()=>status(M.blocked);
+ });
+ deletes.set(name,task);task.catch(()=>deletes.delete(name));return task;
+}
+async function purgeDatabases(){
+ const names=new Set(DB_NAMES);const idb=window.indexedDB;
+ if(!idb)return;
+ if(typeof idb.databases==='function'){
+  try{for(const db of await idb.databases())if(ownsDB(db.name))names.add(db.name);}catch(_){}
+ }
+ const outcomes=await Promise.allSettled([...names].map(deleteDB));
+ if(outcomes.some(r=>r.status==='rejected'))throw Error('Some databases were not deleted');
+}
+async function purgeCaches(){
+ // This release has no CacheStorage/offline worker. Clean only explicitly branded
+ // caches left by a compatible earlier version, never unrelated or root caches.
+ if(!('caches' in window))return;
+ const cache=window.caches;
+ const names=await cache.keys();
+ for(const name of names)if(/^vocab-?clash(?:[-_:]|$)/i.test(name)){
+  await cache.delete(name);
+  if(await cache.has(name))throw Error('Cache deletion failed');
+ }
+}
+function freshPage(){
+ const url=new URL(location.href);url.search='';url.hash='';
+ location.replace(url.href);
+}
+function normalOpen(){
+ if(active||busy)return;
+ if(document.body.dataset.view!=='lobby'){status(M.returnFirst);return;}
+ returnFocus=document.activeElement;confirmed=false;remote=false;setPhase('confirm');status('');
+ $('vcFormatTitle').textContent=M.title;$('vcFormatBody').textContent=M.body;
+ for(const id of ['vcFormatWarning','vcFormatScope','vcFormatTabs'])$(id).hidden=false;
+ $('vcFormatCancel').hidden=false;$('vcFormatCancel').disabled=false;$('vcFormatCancel').textContent=M.cancel;
+ $('vcFormatConfirm').hidden=false;$('vcFormatConfirm').disabled=false;$('vcFormatConfirm').textContent=M.confirm;
+ showDialog();$('vcFormatCancel').focus({preventScroll:true});
+}
+function cancel(){
+ if(confirmed||active||busy)return;
+ if(dialog.open)dialog.close();setPhase('idle');
+ if(returnFocus?.isConnected)try{returnFocus.focus({preventScroll:true});}catch(_){}
+}
+async function run(){
+ // Public APIs do not expose run(). Only this dialog's explicit confirm invokes it.
+ if(busy||remote||!dialog.open||!['confirm','error'].includes(phase))return;
+ if(phase==='confirm'&&document.body.dataset.view!=='lobby'){status(M.returnFirst);return;}
+ confirmed=true;busy=true;active=true;setPhase('running');
+ $('vcFormatCancel').disabled=true;$('vcFormatConfirm').disabled=true;$('vcFormatConfirm').textContent=M.busy;
+ status(M.working);signal('busy');
+ try{
+  await quiesce();
+  await purgeDatabases();
+  purgeStorage('localStorage',true);purgeStorage('sessionStorage');
+  await purgeCaches();
+  setPhase('done');status(M.done);signal('done');
+  // A new document drops all in-memory state and restores the existing defaults.
+  setTimeout(freshPage,800);
+ }catch(error){
+  setPhase('error');status(M.error);signal('error');
+  $('vcFormatCancel').disabled=false;$('vcFormatCancel').textContent=M.reload;
+  $('vcFormatConfirm').disabled=false;$('vcFormatConfirm').textContent=M.retry;
+  console.warn('VOCAB CLASH format did not complete:',error?.name||'Error');
+ }finally{busy=false;}
+}
+function showRemote(state){
+ if(confirmed)return;
+ remote=true;active=true;setPhase('remote-'+state);
+ quiesce().catch(()=>{});
+ $('vcFormatTitle').textContent=state==='done'?M.section:M.remoteTitle;
+ $('vcFormatBody').textContent=state==='done'?M.remoteDone:state==='error'?M.remoteError:M.remoteBody;
+ for(const id of ['vcFormatWarning','vcFormatTabs'])$(id).hidden=true;
+ status('');$('vcFormatConfirm').hidden=true;$('vcFormatCancel').hidden=false;
+ $('vcFormatCancel').textContent=M.reload;$('vcFormatCancel').disabled=state==='busy';
+ if(state==='done')try{purgeStorage('sessionStorage');}catch(_){}
+ showDialog();
+ if(state!=='busy')$('vcFormatCancel').focus({preventScroll:true});
+}
+function receive(data){
+ if(!data||data.app!=='vocab-clash'||data.version!==1||data.sender===sender||!['busy','done','error'].includes(data.state))return;
+ showRemote(data.state);
+}
+try{channel=new BroadcastChannel(CHANNEL);channel.onmessage=e=>receive(e.data);}catch(_){}
+window.addEventListener('storage',e=>{if(e.key===SIGNAL&&e.newValue){try{receive(JSON.parse(e.newValue));}catch(_){}}});
+function checkEpoch(){
+ if(active)return;
+ try{const value=localStorage.getItem(SIGNAL);if(value&&value!==initialSignal){const data=JSON.parse(value);if(data.sender!==sender)receive(data);}}catch(_){}
+}
+window.addEventListener('focus',checkEpoch);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkEpoch();});
+function updateLock(){
+ const blocked=active||document.body.dataset.view!=='lobby'||['createRoomBtn','joinRoomBtn','aiStartBtn'].some(id=>$(id)?.disabled);
+ $('resetAiHistoryBtn').disabled=blocked;$('vcFormatLock').hidden=!blocked;$('vcFormatLock').textContent=blocked?M.returnFirst:'';
+}
+const observer=new MutationObserver(updateLock);
+observer.observe(document.body,{attributes:true,attributeFilter:['data-view']});
+for(const id of ['createRoomBtn','joinRoomBtn','aiStartBtn'])if($(id))observer.observe($(id),{attributes:true,attributeFilter:['disabled']});
+$('resetAiHistoryBtn').onclick=normalOpen;
+$('vcFormatCancel').onclick=()=>{if(remote||phase==='error')freshPage();else cancel();};
+$('vcFormatConfirm').onclick=run;
+dialog.addEventListener('cancel',e=>{e.preventDefault();cancel();});
+dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)cancel();}});
+dialog.addEventListener('keydown',e=>{
+ if(e.key==='Escape'){e.preventDefault();e.stopPropagation();cancel();}
+ if(e.key==='Tab'){
+  const nodes=[...dialog.querySelectorAll('button')].filter(n=>!n.hidden&&!n.disabled&&n.getClientRects().length);
+  if(!nodes.length){e.preventDefault();return;}
+  const first=nodes[0],last=nodes[nodes.length-1];
+  if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+  else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+ }
+});
+window.VocabFullReset=Object.freeze({version:'full-site-reset-r1',get active(){return active;},snapshot:()=>({phase,active,busy,remote}),ownsKey,ownsDB});
+updateLock();
+})();
 </script>
 <script id="vocab-splash-ready">
 (function(){
