@@ -2336,6 +2336,57 @@ html[data-vc-splash="active"] body{overflow:hidden!important}
 
 </style>
 <style id="vocab-daily-prompt-audio">#reviewPromptPronounceBtn{margin:0 0 16px}#reviewPromptPronounceBtn[hidden],#reviewPronounceBtn[hidden]{display:none!important}</style>
+<style id="vocab-home-progress-style">
+/* Read-only home progress. Scoped to the lobby; no battle-option animation. */
+.vc-refined.vc-neon #lobbyHeadline br{display:block}
+.vc-refined.vc-neon #lobbyProgress{margin-top:25px;padding-top:20px;border-top:1px solid #325377}
+#lobbyProgress .vc-home-progress-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:17px}
+#lobbyProgress .vc-home-progress-head h3{font:650 14px/1.6 var(--vd-body);color:#dfebfb;margin:0}
+#lobbyProgress .vc-home-progress-head>span{font:400 12px/1.5 var(--vd-body);color:#a5b8d3;white-space:nowrap}
+.vc-refined.vc-neon #lobbyProgressNumbers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:0;padding:0;border:0}
+.vc-refined.vc-neon #lobbyProgressNumbers>div{display:flex;flex-direction:column;align-items:flex-start;gap:7px;padding:0 14px;min-width:0}
+.vc-refined.vc-neon #lobbyProgressNumbers>div:first-child{padding-left:0}
+.vc-refined.vc-neon #lobbyProgressNumbers>div:last-child{padding-right:0}
+.vc-refined.vc-neon #lobbyProgressNumbers strong{display:block;font:800 clamp(26px,2.7vw,34px)/1.2 var(--vd-display);font-variant-numeric:tabular-nums;letter-spacing:-.03em;white-space:nowrap;min-height:1.2em}
+.vc-refined.vc-neon #lobbyProgressNumbers span{font:400 12px/1.5 var(--vd-body);margin:0;color:#b9cbe5;white-space:nowrap}
+#lobbyProgressNote{font:400 12px/1.65 var(--vd-body);color:#ddbc7e;margin:14px 0 0}
+.vc-refined.vc-neon #viewLobby>.vc-home-vocab{grid-column:1/-1;padding:25px 28px;border:1px solid #405577;border-left:3px solid #dfb766;border-radius:17px;background:linear-gradient(110deg,#111f3a,#10182d);box-shadow:0 6px 22px #00031d26;margin:0}
+#lobbyVocabulary .vc-home-vocab-row{display:flex;justify-content:space-between;align-items:center;gap:24px}
+#lobbyVocabulary h3{font:650 15px/1.65 var(--vd-body);margin:0 0 7px;color:#dfebfb}
+#lobbyVocabulary .vc-home-vocab-result{font:800 clamp(25px,3vw,36px)/1.4 var(--vd-display);letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:#ffe0a0;margin:0;overflow-wrap:anywhere}
+#lobbyVocabulary .vc-home-vocab-detail{max-width:33em;text-align:right}
+#lobbyVocabulary #lobbyVocabularySample{font:500 14px/1.8 var(--vd-body);color:#d7e5f8;margin:0 0 5px}
+#lobbyVocabulary #lobbyVocabularyScope{font:400 12px/1.7 var(--vd-body);color:#adbed8;margin:0}
+#lobbyVocabulary details{margin:14px 0 0;font:400 12px/1.75 var(--vd-body);color:#b7c9e0}
+#lobbyVocabulary summary{display:flex;align-items:center;gap:7px;min-height:44px;width:max-content;max-width:100%;cursor:pointer;color:#b4dcec;list-style:none}
+#lobbyVocabulary summary::-webkit-details-marker{display:none}
+#lobbyVocabulary summary::before{content:'+';font-size:17px;line-height:1;width:12px}
+#lobbyVocabulary details[open] summary::before{content:'\2212'}
+#lobbyVocabulary details p{max-width:68em;margin:0 0 8px}
+#lobbyVocabulary summary:focus-visible{outline:2px solid #9deaff;outline-offset:3px;border-radius:4px}
+#lobbyProgress[aria-busy=true] strong,#lobbyVocabulary[aria-busy=true] .vc-home-vocab-result{color:#9bafcd;text-shadow:none}
+#lobbyProgressNote[hidden]{display:none!important}
+@media(max-width:800px){
+ .vc-refined.vc-neon #lobbyProgress{margin-top:21px;padding-top:17px}
+ .vc-refined.vc-neon #viewLobby>.vc-home-vocab{padding:21px 22px}
+ #lobbyVocabulary .vc-home-vocab-row{align-items:flex-start}
+}
+@media(max-width:540px){
+ #lobbyVocabulary .vc-home-vocab-row{display:block}
+ #lobbyVocabulary .vc-home-vocab-detail{text-align:left;margin-top:12px}
+ #lobbyVocabulary .vc-home-vocab-result{font-size:28px}
+ .vc-refined.vc-neon #viewLobby>.vc-home-vocab{padding:20px}
+ .vc-refined.vc-neon #lobbyProgressNumbers>div{padding:0 12px}
+ .vc-refined.vc-neon #lobbyProgressNumbers strong{font-size:28px}
+}
+@media(max-width:360px){
+ .vc-refined.vc-neon #lobbyProgressNumbers>div{padding:0 8px}
+ .vc-refined.vc-neon #lobbyProgressNumbers strong{font-size:24px}
+ .vc-refined.vc-neon #lobbyProgressNumbers span{font-size:11px}
+ #lobbyVocabulary .vc-home-vocab-result{font-size:25px}
+}
+
+</style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-black vc-refined vc-v2 vc-neon" data-visual-version="2.0" data-logo-design="neon-r1" data-design-version="4.4.0" data-view="lobby">
 <!-- Startup brand screen. Hidden when JavaScript is unavailable. -->
@@ -2468,11 +2519,18 @@ try{
 </details></section>
 <!-- VIEW 1: LOBBY SCREEN -->
 <section class="" id="viewLobby">
-<div class="text-center vd-intro"><div id="lobbyName" aria-label="VOCABCLASH"><span>VOCAB</span><span>CLASH</span></div>
+<div class="text-center vd-intro">
 <div aria-live="polite" class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 text-xs font-semibold vd-network" data-connected="false" id="networkPill"><span class="vc-status-dot"></span><span id="networkStatus">建立房間，邀朋友一起玩</span></div>
 <h2 id="lobbyHeadline" class="text-3xl sm:text-5xl font-extrabold tracking-tight font-gaming text-white">把背單字，<br/>變成一場遊戲。</h2>
 <p class="text-slate-400 max-w-xl mx-auto text-sm sm:text-base">用對戰練單字，玩完再複習。</p>
-<div aria-label="題庫與玩法" class="vd-match-rules"><div><strong>10,000</strong><span>個詞條</span></div><div><strong>40,000</strong><span>道題目</span></div><div><strong>4</strong><span>種題型</span></div></div><ul aria-label="遊戲特色" class="vc-home-features"><li>好友對戰／AI 分級練習</li><li>收藏單字、聽發音、每天複習</li><li>查看作答紀錄與單字量估計</li></ul></div>
+<section id="lobbyProgress" aria-label="累積學習進度" aria-busy="true">
+<div class="vc-home-progress-head"><h3>累積學習進度</h3><span>全部紀錄</span></div>
+<div class="vd-match-rules" id="lobbyProgressNumbers">
+<div role="group" aria-label="作答題數：讀取中"><strong id="lobbyTotalAttempts" aria-hidden="true">—</strong><span aria-hidden="true">作答題數</span></div>
+<div role="group" aria-label="答對題數：讀取中"><strong id="lobbyCorrectAttempts" aria-hidden="true">—</strong><span aria-hidden="true">答對題數</span></div>
+<div role="group" aria-label="正確率：讀取中"><strong id="lobbyAccuracy" aria-hidden="true">—</strong><span aria-hidden="true">正確率</span></div>
+</div><p class="sr-only" id="lobbyProgressAccessible" role="status" aria-live="polite"></p><p id="lobbyProgressNote" hidden></p>
+</section><ul aria-label="遊戲特色" class="vc-home-features"><li>好友對戰／AI 分級練習</li><li>收藏單字、聽發音、每天複習</li><li>查看作答紀錄與單字量估計</li></ul></div>
 <!-- Player Profile / Nickname Setup Card -->
 <div class="vd-workspace"><div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-2xl vd-playdesk"><div class="hidden" id="inlineError" role="alert"></div>
 <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 vd-profile">
@@ -2528,6 +2586,12 @@ try{
 <div class="vc-bank-body"><p>每局隨機出題，不重複考同一個詞條。</p>
 <div class="vc-bank-grid"><span>基礎 <strong>8,000 題</strong></span><span>中階 <strong>10,000 題</strong></span><span>進階 <strong>8,800 題</strong></span><span>高階 <strong>7,200 題</strong></span><span>片語 <strong>1,400 題</strong></span><span>流行語 <strong>600 題</strong></span><span>魔王 <strong>4,000 題</strong></span></div>
 <p class="vc-bank-note">共 10,000 個詞條、40,000 題，包含單字、片語與流行語。打亂選項不算新題；難度是遊戲分級，詞義以題目用法為準。</p></div></details></div>
+
+<section class="vc-home-vocab" id="lobbyVocabulary" aria-labelledby="lobbyVocabularyTitle" aria-busy="true">
+<div class="vc-home-vocab-row"><div><h3 id="lobbyVocabularyTitle">累積單字量級距</h3><p id="lobbyVocabularyResult" class="vc-home-vocab-result">讀取中…</p></div>
+<div class="vc-home-vocab-detail"><p id="lobbyVocabularySample">正在讀取學習紀錄</p><p id="lobbyVocabularyScope">依題庫作答估計，不代表完整英文字彙量。</p></div></div>
+<details><summary>如何計算？</summary><p id="lobbyVocabularyMethod">讀取紀錄後顯示計算方式。</p></details>
+</section>
 </section>
 <!-- VIEW 2: ROOM WAITING SCREEN -->
 <section class="hidden space-y-6" id="viewWaiting">
@@ -2728,8 +2792,8 @@ try{
 <label class="vc-pref-row" for="studyAutoAudio"><span><strong>複習自動發音</strong><small>今日複習與翻卡：單字出現就發音；錯題再測則在作答後發音</small></span><input id="studyAutoAudio" type="checkbox" role="switch" checked></label><p id="hapticsSupportHint"></p><button class="vc-feedback-test" onclick="testAnswerFeedback()" type="button">測試音效與震動</button><p id="feedbackTestStatus" role="status"></p></section><section class="vc-battle-music-settings" aria-labelledby="battleMusicTitle">
 <h4 id="battleMusicTitle">對戰音樂 <span class="vc-new">NEW</span></h4>
 <label class="vc-pref-row" for="battleMusicEnabled"><span><strong>播放對戰音樂</strong><small>好友與 AI 對戰都會播放；每局一首，5 首輪流播放</small></span><input id="battleMusicEnabled" type="checkbox" role="switch" checked></label>
-<div class="vc-music-volume"><label for="battleMusicVolume">音樂音量</label><output id="battleMusicVolumeValue" for="battleMusicVolume">12%</output><input id="battleMusicVolume" type="range" min="0" max="100" step="1" value="12" aria-label="音樂音量"></div>
-<p id="battleMusicStatus" role="status" aria-live="polite">好友與 AI 對戰時播放</p><p class="vc-learn-note">優先播放本站原曲；讀不到時，使用 5 段內建器樂備用配樂。</p>
+<div class="vc-music-volume"><label for="battleMusicVolume">音樂音量</label><output id="battleMusicVolumeValue" for="battleMusicVolume">25%</output><input id="battleMusicVolume" type="range" min="0" max="100" step="1" value="25" aria-label="音樂音量"></div>
+<p id="battleMusicStatus" role="status" aria-live="polite">好友與 AI 對戰時播放</p><p class="vc-learn-note">優先播放本站音檔；讀不到時，嘗試作者公開的線上音檔。</p>
 <details class="vc-music-credits"><summary>曲目與來源</summary><p>已移除舊合成備用曲，改用以下遊戲配樂。優先讀取本站音檔，缺檔時嘗試作者公開的線上音檔。</p><ol><li><a href="https://opengameart.org/content/hopeorchestral-battle-music" target="_blank" rel="noopener noreferrer">Hope</a>｜MintoDog</li><li><a href="https://opengameart.org/content/jrpg-epic-rock-battle-theme-1" target="_blank" rel="noopener noreferrer">JRPG Epic Rock Battle Theme #1</a>｜HydroGene</li><li><a href="https://opengameart.org/content/boss-battle-music" target="_blank" rel="noopener noreferrer">Epic Boss Battle</a>｜Juhani Junkala / SubspaceAudio</li><li><a href="https://opengameart.org/content/battle-theme-0" target="_blank" rel="noopener noreferrer">Battle Theme</a>｜Wolfgang_</li><li><a href="https://opengameart.org/content/the-final-battle" target="_blank" rel="noopener noreferrer">The Final Battle</a>｜skrjablin</li></ol><p>來源頁標示 <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener noreferrer">CC0 1.0</a>。本次更新包未包含原曲檔案，線上播放可能受來源網站、網路或瀏覽器限制。正式使用請把原曲放到 music/battle-r2/。</p><p>每局固定一首，只在對戰中播放。本站音軌使用音量平衡與輕微高頻衰減；直接線上串流僅調整播放音量。不改變旋律或速度。</p><p>線上音檔由 OpenGameArt 提供，讀取時會傳送一般網路請求資訊。作者與本遊戲沒有合作或代言關係。</p></details>
 </section><div class="v2-motion-control"><label for="v2MotionPreference">介面動態<small>不影響計時與音效</small></label><select id="v2MotionPreference"><option value="auto">跟隨系統</option><option value="off">關閉動態</option></select></div><details class="vc-score-rules" id="scoreRules"><summary>計分規則 </summary><p>先看題目 2 秒；選項出現後，才開始 10 秒作答。</p><p>第一秒內答對得 200 基礎分，之後每秒降一級。各級分差不同，詳見下表。</p><table aria-label="時間計分區間"><thead><tr><th>剩餘時間</th><th>基礎分</th></tr></thead><tbody><tr><td>9 &lt; 剩餘秒數 ≤ 10</td><td>200</td></tr><tr><td>8 &lt; 剩餘秒數 ≤ 9</td><td>174.38</td></tr><tr><td>7 &lt; 剩餘秒數 ≤ 8</td><td>149.61</td></tr><tr><td>6 &lt; 剩餘秒數 ≤ 7</td><td>125.75</td></tr><tr><td>5 &lt; 剩餘秒數 ≤ 6</td><td>102.9</td></tr><tr><td>4 &lt; 剩餘秒數 ≤ 5</td><td>81.17</td></tr><tr><td>3 &lt; 剩餘秒數 ≤ 4</td><td>60.72</td></tr><tr><td>2 &lt; 剩餘秒數 ≤ 3</td><td>41.76</td></tr><tr><td>1 &lt; 剩餘秒數 ≤ 2</td><td>24.64</td></tr><tr><td>0 &lt; 剩餘秒數 ≤ 1</td><td>10</td></tr></tbody></table><p>第 1 題答對不加成；連續答對 2 題 ×1.05，3 題 ×1.10，之後每多一題加 0.05。答錯或時間到會中斷連對，不扣已得分數。</p><p>當題得分＝基礎分 × 連對倍率 × 第 10 題倍率，四捨五入至小數點後 2 位。第 10 題為 3 倍；答錯或時間到得 0 分。</p></details><details class="vc-network-advanced" id="networkAdvanced"><summary>連線設定</summary><p id="networkModeInfo">連線方式：直接連線</p><label for="relayUrlInput">中繼伺服器網址（選填）</label><input autocomplete="off" id="relayUrlInput" placeholder="wss://你的伺服器/ws" spellcheck="false" type="url"/><p>留白即可直接連線。使用中繼伺服器時，雙方請填入同一個網址。</p><p id="settingsLockHint"></p><details id="connectionHelp"><summary>使用說明</summary><p>網路或防火牆可能阻擋直接連線。連不上時，可請網站管理者提供中繼伺服器網址。</p><p>房主請保持遊戲畫面開啟。斷線後最多等候 30 秒；關閉或重新整理網頁，可能無法回到原房間。</p><p>兩人都答完或時間到後，一起公布答案。分數以房主或伺服器收到答案的時間計算，網路延遲可能影響得分。</p><p>嵌入其他網站的遊戲若無法正常使用，請改用新分頁直接開啟遊戲。</p><p>請填入以 ws:// 或 wss:// 開頭的中繼網址，不是 Firebase 網址或 API 金鑰。瀏覽器允許儲存時，才會記住設定。</p></details></details><section id="aiHistorySettings"><h4>歷史對戰大比分</h4><p id="aiHistorySummary"></p><p id="aiHistoryStorage"></p><button type="button" id="resetAiHistoryBtn">清除 AI 歷史戰績</button><div id="resetAiHistoryConfirm" hidden><p>確定清除全部 AI 歷史戰績？單字庫不受影響。</p><button id="cancelAiHistoryBtn" type="button">取消</button> <button id="confirmAiHistoryBtn" type="button">確定清除</button></div></section><details id="appInstallHelp"><summary>分享與安裝 <span class="vc-new">NEW</span></summary>
 <div class="vc-engagement-actions"><button type="button" id="vcShareAccess">分享給朋友</button><button type="button" id="appInstallBtn">安裝到電腦</button></div>
@@ -4297,6 +4361,7 @@ function refreshStats(){
   (embedded?'已儲存在這個瀏覽器，請定期備份':book.persistent?'已儲存，瀏覽器已同意保留資料':'已存到這個瀏覽器'):
   '目前只能暫存，關閉前請備份';
  if(book.reason==='some-data-unreadable')status.textContent+=' 部分舊資料無法讀取。';
+ try{window.dispatchEvent(new Event('vocab-learning-changed'));}catch(_){}
 }
 function capture(s){
  progress.capture(s).catch(()=>message('學習紀錄儲存失敗，請備份。'));
@@ -4611,13 +4676,13 @@ window.VocabReview={render,optionData,fillAnsweredOptions,speakCurrent};
 'use strict';
 const TRACKS = Object.freeze([{"id": "hope", "title": "Hope", "author": "MintoDog", "file": "hope.ogg", "page": "https://opengameart.org/content/hopeorchestral-battle-music", "remote": "https://opengameart.org/sites/default/files/hope_orchestral_battle_music_bpm165_0.ogg", "style": "\u660e\u4eae\u7684\u7ba1\u5f26\u6a02\u6230\u9b25\u66f2", "local": "./music/battle-r2/hope.ogg", "license": "https://creativecommons.org/publicdomain/zero/1.0/"}, {"id": "jrpg-rock", "title": "JRPG Epic Rock Battle Theme #1", "author": "HydroGene", "file": "jrpg-rock.mp3", "page": "https://opengameart.org/content/jrpg-epic-rock-battle-theme-1", "remote": "https://opengameart.org/sites/default/files/jrpg_battle_loop.mp3", "style": "\u6416\u6efe\u5c0d\u6230\u66f2", "local": "./music/battle-r2/jrpg-rock.mp3", "license": "https://creativecommons.org/publicdomain/zero/1.0/"}, {"id": "epic-boss", "title": "Epic Boss Battle", "author": "Juhani Junkala / SubspaceAudio", "file": "epic-boss.wav", "page": "https://opengameart.org/content/boss-battle-music", "remote": "https://opengameart.org/sites/default/files/Juhani%20Junkala%20-%20Epic%20Boss%20Battle%20%5BSeamlessly%20Looping%5D.wav", "style": "\u7ba1\u5f26\u6a02\u9b54\u738b\u6230\u914d\u6a02", "local": "./music/battle-r2/epic-boss.wav", "license": "https://creativecommons.org/publicdomain/zero/1.0/"}, {"id": "battle-theme", "title": "Battle Theme", "author": "Wolfgang_", "file": "battle-theme.mp3", "page": "https://opengameart.org/content/battle-theme-0", "remote": "https://opengameart.org/sites/default/files/Battle.mp3", "style": "\u7ba1\u5f26\u6a02\u5c0d\u6230\u914d\u6a02", "local": "./music/battle-r2/battle-theme.mp3", "license": "https://creativecommons.org/publicdomain/zero/1.0/"}, {"id": "final-battle", "title": "The Final Battle", "author": "skrjablin", "file": "final-battle.ogg", "page": "https://opengameart.org/content/the-final-battle", "remote": "https://opengameart.org/sites/default/files/the_final_battle.ogg", "style": "\u6232\u5287\u611f\u8f03\u5f37\u7684\u6230\u9b25\u914d\u6a02", "local": "./music/battle-r2/final-battle.ogg", "license": "https://creativecommons.org/publicdomain/zero/1.0/"}].map(t=>Object.freeze(t)));
 const key = n => 'vc-battle-music-v1-'+n;
-const clamp = (n, fallback=0.12) => Number.isFinite(Number(n)) ? Math.max(0,Math.min(1,Number(n))) : fallback;
+const clamp = (n, fallback=0.25) => Number.isFinite(Number(n)) ? Math.max(0,Math.min(1,Number(n))) : fallback;
 const activePhases = new Set(['preparing','countdown','question','reveal','paused']);
 class Controller {
   constructor({driver, storage, onChange=()=>{}, tracks=TRACKS}) {
     this.driver=driver;this.storage=storage;this.onChange=onChange;this.tracks=tracks;
     this.enabled=this.read('enabled')!=='off';
-    const value=this.read('volume');this.volume=value===null?0.12:clamp(value);
+    const value=this.read('volume');this.volume=value===null?0.25:clamp(value);
     const cursor=Number(this.read('next'));this.next=Number.isSafeInteger(cursor)&&cursor>=0?cursor%tracks.length:0;
     this.snapshot={};this.matchId='';this.track=null;this.begun=false;this.ready=false;
     this.failed=false;this.blocked=false;this.playing=false;this.loading=false;this.playPromise=null;
@@ -4703,7 +4768,7 @@ class Controller {
   }
 }
 class BrowserDriver {
- constructor(win){this.win=win;this.context=null;this.entry=null;this.volume=.12;this.serial=0;this.lastError='';this.loadingMedia=null;this.cache=new Map();}
+ constructor(win){this.win=win;this.context=null;this.entry=null;this.volume=.25;this.serial=0;this.lastError='';this.loadingMedia=null;this.cache=new Map();}
  attachContext(context){
   if(!context||context===this.context)return;
   if(this.context&&this.stateListener)this.context.removeEventListener?.('statechange',this.stateListener);
@@ -5823,7 +5888,7 @@ window.VocabV2Visual=Object.freeze({version:'2.0',get motion(){return body.datas
 <script id="vocab-engagement-core">/* Independent reminder scheduler. No game, scoring, database or transport access. */
 (function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.VocabEngagementCore=api;})(typeof globalThis!=='undefined'?globalThis:this,function(){
 'use strict';
-const COPY={"shareTitle":"喜歡這樣背單字嗎？\n分享給朋友吧！","shareBody":"你的分享，對我們團隊很重要。\n謝謝你讓更多人找到這裡，\n也給我們持續改進的動力。","shareText":"📢VOCABCLASH，把背單字變成一場遊戲！\n\n可以和朋友對戰，也能自己練習🤓\n不熟的單字還能收藏、聽發音、再複習。一起來玩！","urlPlaceholder":"【遊戲網址】","installMobileTitle":"把 VOCABCLASH 放到主畫面","installMobileBody":"下次想玩或複習，點一下圖示就能開啟，不用再找網址。","installDesktopTitle":"把 VOCABCLASH 安裝到電腦","installDesktopBody":"下次直接開啟 App，就能開始對戰或複習單字。","share":"分享給朋友","mobile":"加入主畫面","desktop":"安裝到電腦","later":"先不要","close":"關閉提醒","done":"知道了","copyLink":"複製連結","copyText":"複製分享文字","copied":"連結已複製，貼給朋友就能一起玩。","textCopied":"分享文字已複製，貼給朋友就好。","manualCopy":"無法自動複製，請長按或全選下方文字複製。","shareFallback":"這個瀏覽器無法開啟分享選單，可改為複製連結。","shareDetails":"預覽分享文字","linkLabel":"遊戲網址","localShare":"本機預覽沒有可分享的正式網址。請先在「提醒測試」填入網址，或上傳網站後再試。","backup":"安裝 App 不會自動備份學習紀錄，重要資料請另外匯出。","localInstall":"這是 HTML 預覽檔，不能直接安裝。請先上傳完整網站，再從正式 HTTPS 網址安裝。","frameInstall":"請先在新分頁開啟遊戲，不要安裝 Google Sites 外層頁面。","inAppInstall":"請先從 App 內的選單改用 Safari 或 Chrome 開啟，再加入主畫面。","appleSteps":["用 Safari 開啟遊戲，點「分享」。","選「加入主畫面」；若有「打開為網頁 App」，請開啟。","點「加入」，之後從主畫面圖示開啟。"],"androidSteps":["用 Chrome 開啟遊戲，點右上角選單。","選「安裝應用程式」或「加入主畫面」，再依畫面確認。"],"edgeSteps":["開啟 Edge 選單，找到「應用程式」。","選「將此網站安裝為應用程式」，再確認安裝。"],"macSteps":["在 Safari 的「檔案」選單選「加入 Dock」。","確認名稱後點「加入」。"],"desktopSteps":["在 Chrome 或 Edge 的網址列或選單找到安裝選項。","按畫面確認安裝。若沒有這個選項，可改用 Chrome 或 Edge 開啟正式網址。"],"menuNote":"選單名稱可能隨瀏覽器版本不同。","running":"你已在 App 獨立視窗中，不用再安裝。","installed":"此瀏覽器已回報安裝完成。之後可從 App 圖示開啟。","installPending":"請在瀏覽器的安裝視窗中確認。","installAccepted":"已確認安裝流程，請等待瀏覽器完成。","installDismissed":"已取消安裝，之後可從設定再試。","installFailed":"無法開啟安裝視窗，請依下方步驟操作。","settingsTitle":"分享與安裝","installHelp":"安裝方式","openPage":"開啟獨立遊戲頁面","iconCheck":"檢查圖示與設定","blocked":"請先結束對戰，再分享或安裝。","modeBrowser":"目前在瀏覽器分頁中","modeApp":"目前以 App 視窗開啟","modePreview":"本機預覽模式","testTitle":"提醒測試","testNote":"每天累計使用第 5 分鐘提醒分享，第 10 分鐘提醒安裝，各一次。測試不影響今天的提醒。","testShare":"預覽分享提醒","testInstall":"預覽安裝提醒","testDue":"模擬到提醒時間","testReset":"重播測試提醒","testURL":"正式遊戲網址（本機預覽選填）","testURLSave":"使用這個網址","urlInvalid":"請填入可公開開啟的 HTTPS 遊戲網址。","urlSaved":"已更新預覽用分享網址。","dueReady":"提醒已排入等待。關閉設定、回到大廳後會顯示。","resetDone":"已啟動 5 秒測試，不影響今天的提醒。","next":"下次提醒","remain":"還需前景使用","queued":"已到時間，等待適合的畫面","memoryOnly":"這個瀏覽器無法保留提醒計時，重新整理後會從頭計算。"};
+const COPY={"shareTitle":"喜歡這樣背單字嗎？\n分享給朋友吧！","shareBody":"你的分享，對 VOCAB CLASH團隊很重要。\n謝謝你讓更多人找到這裡，\n也給我們持續改進的動力。","shareText":"📢VOCABCLASH，把背單字變成一場遊戲！\n\n可以和朋友對戰，也能自己練習🤓\n不熟的單字還能收藏、聽發音、再複習。一起來玩！","urlPlaceholder":"【遊戲網址】","installMobileTitle":"把 VOCABCLASH 放到主畫面","installMobileBody":"下次想玩或複習，點一下圖示就能開啟，不用再找網址。","installDesktopTitle":"把 VOCABCLASH 安裝到電腦","installDesktopBody":"下次直接開啟 App，就能開始對戰或複習單字。","share":"分享給朋友","mobile":"加入主畫面","desktop":"安裝到電腦","later":"先不要","close":"關閉提醒","done":"知道了","copyLink":"複製連結","copyText":"複製分享文字","copied":"連結已複製，貼給朋友就能一起玩。","textCopied":"分享文字已複製，貼給朋友就好。","manualCopy":"無法自動複製，請長按或全選下方文字複製。","shareFallback":"這個瀏覽器無法開啟分享選單，可改為複製連結。","shareDetails":"預覽分享文字","linkLabel":"遊戲網址","localShare":"本機預覽沒有可分享的正式網址。請先在「提醒測試」填入網址，或上傳網站後再試。","backup":"安裝 App 不會自動備份學習紀錄，重要資料請另外匯出。","localInstall":"這是 HTML 預覽檔，不能直接安裝。請先上傳完整網站，再從正式 HTTPS 網址安裝。","frameInstall":"請先在新分頁開啟遊戲，不要安裝 Google Sites 外層頁面。","inAppInstall":"請先從 App 內的選單改用 Safari 或 Chrome 開啟，再加入主畫面。","appleSteps":["用 Safari 開啟遊戲，點「分享」。","選「加入主畫面」；若有「打開為網頁 App」，請開啟。","點「加入」，之後從主畫面圖示開啟。"],"androidSteps":["用 Chrome 開啟遊戲，點右上角選單。","選「安裝應用程式」或「加入主畫面」，再依畫面確認。"],"edgeSteps":["開啟 Edge 選單，找到「應用程式」。","選「將此網站安裝為應用程式」，再確認安裝。"],"macSteps":["在 Safari 的「檔案」選單選「加入 Dock」。","確認名稱後點「加入」。"],"desktopSteps":["在 Chrome 或 Edge 的網址列或選單找到安裝選項。","按畫面確認安裝。若沒有這個選項，可改用 Chrome 或 Edge 開啟正式網址。"],"menuNote":"選單名稱可能隨瀏覽器版本不同。","running":"你已在 App 獨立視窗中，不用再安裝。","installed":"此瀏覽器已回報安裝完成。之後可從 App 圖示開啟。","installPending":"請在瀏覽器的安裝視窗中確認。","installAccepted":"已確認安裝流程，請等待瀏覽器完成。","installDismissed":"已取消安裝，之後可從設定再試。","installFailed":"無法開啟安裝視窗，請依下方步驟操作。","settingsTitle":"分享與安裝","installHelp":"安裝方式","openPage":"開啟獨立遊戲頁面","iconCheck":"檢查圖示與設定","blocked":"請先結束對戰，再分享或安裝。","modeBrowser":"目前在瀏覽器分頁中","modeApp":"目前以 App 視窗開啟","modePreview":"本機預覽模式","testTitle":"提醒測試","testNote":"每天累計使用第 5 分鐘提醒分享，第 10 分鐘提醒安裝，各一次。測試不影響今天的提醒。","testShare":"預覽分享提醒","testInstall":"預覽安裝提醒","testDue":"模擬到提醒時間","testReset":"重播測試提醒","testURL":"正式遊戲網址（本機預覽選填）","testURLSave":"使用這個網址","urlInvalid":"請填入可公開開啟的 HTTPS 遊戲網址。","urlSaved":"已更新預覽用分享網址。","dueReady":"提醒已排入等待。關閉設定、回到大廳後會顯示。","resetDone":"已啟動 5 秒測試，不影響今天的提醒。","next":"下次提醒","remain":"還需前景使用","queued":"已到時間，等待適合的畫面","memoryOnly":"這個瀏覽器無法保留提醒計時，重新整理後會從頭計算。"};
 const INTERVAL=10*60*1000;
 class ForegroundSchedule {
  constructor(saved){this.last=null;this.active=false;this.adopt(saved||{});}
@@ -5843,7 +5908,7 @@ function homeURL(base,manifest){try{const m=manifest?new URL(manifest,base):new 
 function platform(nav){const ua=nav.userAgent||'',p=nav.platform||'';
  const apple=/iPhone|iPad|iPod/i.test(ua)||(p==='MacIntel'&&nav.maxTouchPoints>1);
  const android=/Android/i.test(ua);return {apple,android,mobile:apple||android,inApp:/Line\/|FBAN|FBAV|Instagram/i.test(ua),edge:/Edg\//i.test(ua),macSafari:/Mac/i.test(p)&&/Safari/i.test(ua)&&!/Chrome|Chromium|Edg\//i.test(ua)};}
-function shareMessage(url){return COPY.shareText+'\n'+(url||COPY.urlPlaceholder);}
+function shareMessage(url){return COPY.shareText+'\n\n'+(url||COPY.urlPlaceholder);}
 return Object.freeze({INTERVAL,ForegroundSchedule,cleanSiteUrl,homeURL,platform,shareMessage,COPY});
 });
 </script>
@@ -5998,8 +6063,8 @@ function sharePayload(){
  const url=shareURL();
  // HTML paste targets receive a labeled anchor; plain-text targets must retain
  // the destination URL or the invitation would no longer contain a usable link.
- const text=L.shareText+'\n'+T.linkText+'\n'+(url||L.urlPlaceholder);
- return {url,text,html:url?'<div>'+escapeShareHTML(L.shareText).replace(/\n/g,'<br>')+'<br><a href="'+escapeShareHTML(url)+'">'+escapeShareHTML(T.linkText)+'</a></div>':''};
+ const text=L.shareText+'\n\n'+T.linkText+'\n'+(url||L.urlPlaceholder);
+ return {url,text,html:url?'<div>'+escapeShareHTML(L.shareText).replace(/\n/g,'<br>')+'<br><br><a href="'+escapeShareHTML(url)+'">'+escapeShareHTML(T.linkText)+'</a></div>':''};
 }
 function renderShareTools(){
  // Exactly two main actions; the approved message is stored, not rendered as a preview.
@@ -6070,7 +6135,7 @@ async function share(){
  try{
   // Web Share accepts text and URL, not HTML anchors. The receiving app
   // controls URL presentation; do not send raw HTML or pretend the URL is hidden.
-  await navigator.share({title:'VOCABCLASH',text:L.shareText+'\n'+T.linkText,url});
+  await navigator.share({title:'VOCABCLASH',text:L.shareText+'\n\n'+T.linkText,url});
   if(epoch===op&&active)close('shared');
  }catch(error){
   if(epoch===op&&active){if(error?.name==='AbortError')status('');else fallbackShare();}
@@ -6261,6 +6326,119 @@ window.VocabInstall=Object.freeze({isStandalone:standalone,canPrompt:nativeInsta
 dailyStore.read().then(record=>{acceptDaily(record);dailyReady=true;dailyLastWall=Date.now();dailyLastPerf=performance.now();dailyCounting=countable()&&!quickEnabled;queue();}).catch(()=>{storageOK=false;});
 setInterval(tick,1000);sample();persist();displayChanged();updateControls();updateQuickControls();queue();
 })();
+</script>
+<script id="vocab-home-progress">
+/* Home dashboard: reads the existing attempt store and ability estimator only.
+ * Never writes attempts, changes scores, or invents progress for empty profiles.
+ */
+(function(){
+'use strict';
+const $=id=>document.getElementById(id),body=document.body,region=$('lobbyProgress');
+if(!region||!window.VocabLearning?.progress||!window.VocabProgress||!window.VocabAbility)return;
+const progress=window.VocabLearning.progress;
+const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
+const fmt=n=>Math.round(n).toLocaleString('en-US');
+const labels=['\u4f5c\u7b54\u984c\u6578','\u7b54\u5c0d\u984c\u6578','\u6b63\u78ba\u7387'];
+const ids=['lobbyTotalAttempts','lobbyCorrectAttempts','lobbyAccuracy'];
+const numberNodes=ids.map($);
+let disposed=false,available=false,entered=false,epoch=0,frameId=0,enterTimer=0,refreshTimer=0;
+let readTask=null,data=null,signature='',requestSerial=0,entryCount=0,animationCount=0;
+const effects=new Set();
+function visible(){return !disposed&&!document.hidden&&body.dataset.view==='lobby'&&!$('viewLobby').classList.contains('hidden')&&!body.classList.contains('vc-touring')&&!document.documentElement.hasAttribute('data-vc-splash')&&!document.querySelector('dialog[open]');}
+function motionAllowed(){return !reduced.matches&&body.dataset.v2Motion!=='reduce'&&visible();}
+function text(node,value){if(node&&node.textContent!==value)node.textContent=value;}
+function cancelMotion(finish=true){
+ if(frameId){cancelAnimationFrame(frameId);frameId=0;}
+ for(const effect of effects){try{effect.cancel();}catch(_){}}effects.clear();
+ if(finish&&data)paint(1);
+}
+function paint(ratio){
+ if(!data)return;
+ const values=[data.summary.total,data.summary.correct,data.summary.accuracy===null?null:Math.round(data.summary.accuracy*100)];
+ values.forEach((n,i)=>text(numberNodes[i],n===null?'\u2014':fmt(n*ratio)+(i===2?'%':'')));
+}
+function reveal(node,delay=0){
+ if(!motionAllowed()||typeof node?.animate!=='function')return;
+ try{
+  const effect=node.animate([{opacity:.55,transform:'translateY(5px)'},{opacity:1,transform:'translateY(0)'}],{duration:360,delay,easing:'cubic-bezier(.2,.8,.2,1)',fill:'none'});
+  effects.add(effect);const done=()=>effects.delete(effect);effect.addEventListener('finish',done,{once:true});effect.addEventListener('cancel',done,{once:true});
+ }catch(_){}
+}
+function animateNumbers(){
+ cancelMotion();if(!data)return;
+ if(!motionAllowed()){paint(1);return;}
+ animationCount++;const ticket=epoch;let start=null;
+ paint(0);Array.from($('lobbyProgressNumbers').children).forEach((node,i)=>reveal(node,i*55));reveal($('lobbyVocabulary'),90);
+ function step(now){
+  if(ticket!==epoch||!motionAllowed()){cancelMotion();return;}
+  if(start===null)start=now;
+  const t=Math.min(1,Math.max(0,(now-start)/780)),ease=1-Math.pow(1-t,3);
+  paint(ease);
+  if(t<1)frameId=requestAnimationFrame(step);else{frameId=0;paint(1);}
+ }
+ frameId=requestAnimationFrame(step);
+}
+function apply(rows,animate){
+ const now=Date.now();
+ const summary=window.VocabProgress.aggregate(rows,{mode:'all',days:0,now});
+ const ability=window.VocabAbility.evaluate(rows,{days:0,now});
+ const sig=JSON.stringify([summary.total,summary.correct,summary.accuracy,ability.label,ability.sample,ability.missing,progress.mode,progress.reason]);
+ const changed=sig!==signature;signature=sig;data={summary,ability};available=true;
+ region.setAttribute('aria-busy','false');$('lobbyVocabulary').setAttribute('aria-busy','false');
+ const totals=[fmt(summary.total),fmt(summary.correct),summary.accuracy===null?'\u5c1a\u7121\u4f5c\u7b54\u7d00\u9304':Math.round(summary.accuracy*100)+'%'];
+ numberNodes.forEach((node,i)=>node.parentElement.setAttribute('aria-label',labels[i]+'\uff1a'+totals[i]));
+ text($('lobbyProgressAccessible'),labels.map((label,i)=>label+' '+totals[i]).join('\uff1b'));
+ text($('lobbyVocabularyResult'),ability.label);$('lobbyVocabularyResult').dataset.status=ability.status;
+ text($('lobbyVocabularySample'),'\u5df2\u53c3\u8003 '+fmt(ability.sample)+' \u500b\u4e0d\u540c\u55ae\u5b57');
+ text($('lobbyVocabularyScope'),'\u4f9d\u984c\u5eab\u4f5c\u7b54\u4f30\u8a08\uff0c\u4e0d\u4ee3\u8868\u5b8c\u6574\u82f1\u6587\u5b57\u5f59\u91cf\u3002');
+ text($('lobbyVocabularyMethod'),'\u81f3\u5c11\u7d2f\u7a4d '+window.VocabAbility.MIN_TOTAL+' \u500b\u4e0d\u540c\u55ae\u5b57\uff0c\u4e94\u500b\u96e3\u5ea6\u5404 '+window.VocabAbility.MIN_PER_LEVEL+' \u500b\uff0c\u624d\u6703\u986f\u793a\u7d1a\u8ddd\u3002\u4f9d\u5404\u96e3\u5ea6\u55ae\u5b57\u7684\u9996\u6b21\u8a5e\u7fa9\u4f5c\u7b54\u4f30\u8a08\uff0c\u4e0d\u8a08\u91cd\u8907\u7df4\u7fd2\u3001\u8907\u7fd2\u3001\u62fc\u5b57\u3001\u7247\u8a9e\u8207\u6d41\u884c\u8a9e\u3002\u7bc4\u570d\u70ba\u672c\u984c\u5eab\u7684 '+fmt(ability.population)+' \u500b\u55ae\u5b57\uff0c\u4e26\u975e\u6a19\u6e96\u5316\u6e2c\u9a57\u7d50\u679c\u3002');
+ const note=progress.mode==='memory'?'\u76ee\u524d\u53ea\u80fd\u66ab\u5b58\u5b78\u7fd2\u7d00\u9304\uff0c\u95dc\u9589\u524d\u8acb\u532f\u51fa\u5099\u4efd\u3002':progress.reason==='limit-reached'?'\u5df2\u9054 20,000 \u7b46\u4f5c\u7b54\u7d00\u9304\u4e0a\u9650\uff0c\u8acb\u5148\u5099\u4efd\u3002':progress.reason==='some-data-unreadable'?'\u90e8\u5206\u7d00\u9304\u7121\u6cd5\u8b80\u53d6\uff0c\u76ee\u524d\u986f\u793a\u53ef\u8b80\u53d6\u7684\u8cc7\u6599\u3002':'';
+ text($('lobbyProgressNote'),note);$('lobbyProgressNote').hidden=!note;
+ if(animate&&visible())animateNumbers();else if(changed||!frameId){cancelMotion(false);paint(1);}
+}
+function readRows(){
+ if(!readTask){readTask=progress.list().finally(()=>{readTask=null;});}
+ return readTask;
+}
+async function refresh(animate=false){
+ if(!visible())return;
+ const ticket=epoch,serial=++requestSerial;
+ try{await progress.ready;const rows=await readRows();
+  if(ticket!==epoch||serial!==requestSerial||!visible())return;
+  apply(rows,animate||!available);
+ }catch(_){
+  if(ticket!==epoch||!visible())return;
+  region.setAttribute('aria-busy','false');$('lobbyVocabulary').setAttribute('aria-busy','false');
+  text($('lobbyProgressNote'),'\u5b78\u7fd2\u7d00\u9304\u66ab\u6642\u7121\u6cd5\u8b80\u53d6\uff0c\u8acb\u7a0d\u5f8c\u518d\u8a66\u3002');$('lobbyProgressNote').hidden=false;
+  if(!data)text($('lobbyVocabularyResult'),'\u66ab\u6642\u7121\u6cd5\u8b80\u53d6');
+ }
+}
+function synchronize(){
+ const canShow=visible();
+ if(canShow&&!entered){
+  entered=true;entryCount++;epoch++;
+  clearTimeout(enterTimer);enterTimer=setTimeout(()=>refresh(true),70);
+ }else if(!canShow&&entered){entered=false;epoch++;clearTimeout(enterTimer);clearTimeout(refreshTimer);cancelMotion();}
+ if(!motionAllowed()&&frameId)cancelMotion();
+}
+function changed(){
+ if(!visible())return;clearTimeout(refreshTimer);refreshTimer=setTimeout(()=>refresh(false),100);
+}
+const observer=new MutationObserver(synchronize);
+observer.observe(body,{attributes:true,attributeFilter:['data-view','class','data-v2-motion']});
+observer.observe(document.documentElement,{attributes:true,attributeFilter:['data-vc-splash']});
+for(const modal of document.querySelectorAll('dialog'))observer.observe(modal,{attributes:true,attributeFilter:['open']});
+window.addEventListener('vocab-learning-changed',changed);
+window.addEventListener('focus',()=>{synchronize();if(entered)changed();});
+document.addEventListener('visibilitychange',synchronize);
+window.addEventListener('pagehide',()=>{epoch++;entered=false;clearTimeout(enterTimer);clearTimeout(refreshTimer);cancelMotion();});
+window.addEventListener('pageshow',synchronize);
+if(reduced.addEventListener)reduced.addEventListener('change',synchronize);else reduced.addListener?.(synchronize);
+// Read-only diagnostics. No fake data, clock changes or production-store mutation.
+window.VocabHomeProgress=Object.freeze({version:'home-progress-r1',snapshot:()=>({ready:available,entered,animating:!!frameId,entries:entryCount,animations:animationCount,summary:data?{total:data.summary.total,correct:data.summary.correct,accuracy:data.summary.accuracy}:null,ability:data?{label:data.ability.label,sample:data.ability.sample,status:data.ability.status}:null})});
+synchronize();
+})();
+
 </script>
 <script id="vocab-splash-ready">
 (function(){
