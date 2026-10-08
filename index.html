@@ -8,7 +8,7 @@
 <!-- VOCABCLASH SOCIAL META START -->
 <!-- Static share metadata configured for this published site. Upload share-logo.png beside index.html. -->
 <meta name="vocab-share-status" content="configured">
-<meta name="vocab-share-release" content="share-two-files-r2">
+<meta name="vocab-share-release" content="share-link-label-r3">
 <meta name="description" content="可以和朋友對戰，也能自己練習。不熟的單字還能收藏、聽發音、再複習。">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="zh_TW">
@@ -5696,7 +5696,7 @@ return Object.freeze({INTERVAL,ForegroundSchedule,cleanSiteUrl,homeURL,platform,
 (function(){
 'use strict';
 const C=window.VocabEngagementCore,L=C.COPY,$=id=>document.getElementById(id);
-const T={"copyText":"\u8907\u88fd\u5206\u4eab\u6587","linkText":"\u7acb\u5373\u4f7f\u7528 VOCABCLASH","needURL":"\u8acb\u5148\u95dc\u9589\u9019\u500b\u8996\u7a97\uff0c\u5728\u6e2c\u8a66\u5340\u586b\u5165\u6b63\u5f0f\u904a\u6232\u7db2\u5740\u3002","richCopied":"\u5206\u4eab\u6587\u8207\u9023\u7d50\u5df2\u8907\u88fd\u3002","plainFallback":"\u5206\u4eab\u6587\u8207\u9023\u7d50\u5df2\u8907\u88fd\u3002","textCopied":"\u5206\u4eab\u6587\u8207\u9023\u7d50\u5df2\u8907\u88fd\u3002","shareFallback":"\u76ee\u524d\u7121\u6cd5\u958b\u555f\u5206\u4eab\uff0c\u8acb\u6309\u300c\u8907\u88fd\u5206\u4eab\u6587\u300d\u3002","installButton":"\u5b89\u88dd App","installedButton":"\u5df2\u5b89\u88dd App","installGuide":"\u67e5\u770b\u5b89\u88dd\u65b9\u5f0f","installWaiting":"\u7b49\u5f85\u5b89\u88dd\u78ba\u8a8d","installReady":"\u53ef\u76f4\u63a5\u5b89\u88dd\uff1a\u9ede\u300c\u5b89\u88dd App\u300d\u5f8c\uff0c\u518d\u65bc\u700f\u89bd\u5668\u8996\u7a97\u78ba\u8a8d\u3002","previewInstall":"\u9019\u662f\u9810\u89bd\u6a94\uff0c\u8acb\u5f9e\u6b63\u5f0f HTTPS \u7db2\u7ad9\u6e2c\u8a66\u5b89\u88dd\u3002","httpsInstall":"\u8acb\u6539\u7528\u6b63\u5f0f HTTPS \u7db2\u5740\uff0c\u518d\u6e2c\u8a66\u5b89\u88dd\u3002","appleInstall":"iPhone\uff0fiPad\uff1a\u8acb\u7528\u700f\u89bd\u5668\u7684\u300c\u5206\u4eab\u300d\u2192\u300c\u52a0\u5165\u4e3b\u756b\u9762\u300d\u3002","waitingInstall":"\u700f\u89bd\u5668\u5c1a\u672a\u63d0\u4f9b\u5b89\u88dd\u63d0\u793a\uff0c\u53ef\u5148\u67e5\u770b\u624b\u52d5\u5b89\u88dd\u65b9\u5f0f\u3002"};
+const T={"copyText":"\u8907\u88fd\u5206\u4eab\u6587","linkText":"\u7acb\u5373\u9ad4\u9a57 VOCAB CLASH","needURL":"\u8acb\u5148\u95dc\u9589\u9019\u500b\u8996\u7a97\uff0c\u5728\u6e2c\u8a66\u5340\u586b\u5165\u6b63\u5f0f\u904a\u6232\u7db2\u5740\u3002","richCopied":"\u5df2\u8907\u88fd\u5206\u4eab\u6587\u8207\u6587\u5b57\u9023\u7d50\u3002","plainFallback":"\u5df2\u8907\u88fd\u5206\u4eab\u6587\u8207\u5b8c\u6574\u7db2\u5740\uff08\u6587\u5b57\u9023\u7d50\u683c\u5f0f\u7121\u6cd5\u8907\u88fd\uff09\u3002","textCopied":"\u5206\u4eab\u6587\u8207\u9023\u7d50\u5df2\u8907\u88fd\u3002","shareFallback":"\u76ee\u524d\u7121\u6cd5\u958b\u555f\u5206\u4eab\uff0c\u8acb\u6309\u300c\u8907\u88fd\u5206\u4eab\u6587\u300d\u3002","installButton":"\u5b89\u88dd App","installedButton":"\u5df2\u5b89\u88dd App","installGuide":"\u67e5\u770b\u5b89\u88dd\u65b9\u5f0f","installWaiting":"\u7b49\u5f85\u5b89\u88dd\u78ba\u8a8d","installReady":"\u53ef\u76f4\u63a5\u5b89\u88dd\uff1a\u9ede\u300c\u5b89\u88dd App\u300d\u5f8c\uff0c\u518d\u65bc\u700f\u89bd\u5668\u8996\u7a97\u78ba\u8a8d\u3002","previewInstall":"\u9019\u662f\u9810\u89bd\u6a94\uff0c\u8acb\u5f9e\u6b63\u5f0f HTTPS \u7db2\u7ad9\u6e2c\u8a66\u5b89\u88dd\u3002","httpsInstall":"\u8acb\u6539\u7528\u6b63\u5f0f HTTPS \u7db2\u5740\uff0c\u518d\u6e2c\u8a66\u5b89\u88dd\u3002","appleInstall":"iPhone\uff0fiPad\uff1a\u8acb\u7528\u700f\u89bd\u5668\u7684\u300c\u5206\u4eab\u300d\u2192\u300c\u52a0\u5165\u4e3b\u756b\u9762\u300d\u3002","waitingInstall":"\u700f\u89bd\u5668\u5c1a\u672a\u63d0\u4f9b\u5b89\u88dd\u63d0\u793a\uff0c\u53ef\u5148\u67e5\u770b\u624b\u52d5\u5b89\u88dd\u65b9\u5f0f\u3002"};
 const dialog=$('vcEngagementDialog'),help=$('appInstallHelp');if(!dialog||!help)return;
 const isPreview=!!document.querySelector('meta[name="vocab-preview"]');
 const quickRequested=!!document.querySelector('meta[name="vocab-quick-test"]')||new URLSearchParams(location.search).get('vc-quick')==='1';
@@ -5827,7 +5827,10 @@ function close(reason='dismiss',restore=true){
 function escapeShareHTML(value){return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function sharePayload(){
  const url=shareURL();
- return {url,text:C.shareMessage(url),html:url?'<div>'+escapeShareHTML(L.shareText).replace(/\n/g,'<br>')+'<br><a href="'+escapeShareHTML(url)+'">'+T.linkText+'</a></div>':''};
+ // HTML paste targets receive a labeled anchor; plain-text targets must retain
+ // the destination URL or the invitation would no longer contain a usable link.
+ const text=L.shareText+'\n'+T.linkText+'\n'+(url||L.urlPlaceholder);
+ return {url,text,html:url?'<div>'+escapeShareHTML(L.shareText).replace(/\n/g,'<br>')+'<br><a href="'+escapeShareHTML(url)+'">'+escapeShareHTML(T.linkText)+'</a></div>':''};
 }
 function renderShareTools(){
  // Exactly two main actions; the approved message is stored, not rendered as a preview.
@@ -5896,7 +5899,9 @@ async function share(){
  if(typeof navigator.share!=='function'){fallbackShare();return;}
  const epoch=op;nativeBusy=true;setShareBusy(true);
  try{
-  await navigator.share({title:'VOCABCLASH',text:L.shareText,url});
+  // Web Share accepts text and URL, not HTML anchors. The receiving app
+  // controls URL presentation; do not send raw HTML or pretend the URL is hidden.
+  await navigator.share({title:'VOCABCLASH',text:L.shareText+'\n'+T.linkText,url});
   if(epoch===op&&active)close('shared');
  }catch(error){
   if(epoch===op&&active){if(error?.name==='AbortError')status('');else fallbackShare();}
@@ -6081,7 +6086,7 @@ if(local()&&quickRequested)$('vcQuickEnvironment').open=true;
 window.VocabQuickTest=Object.freeze({preview:previewQuick,replay:resetReminder,stop:endQuick});
 
 function snapshot(){return {...schedule.save(),quick:{enabled:quickEnabled,delayMs:QUICK_DELAY,stage:quickStage,elapsed:quickElapsed,finished:quickStage>=2},intervalMs:C.INTERVAL,popup:active?.kind||'',source:active?.source||'',standalone:standalone(),knownInstalled,canPrompt:nativeInstallReady(),installState:installState().code,testMode,storageOK,shareURL:shareURL(),sessionKey};}
-window.VocabEngagement=Object.freeze({version:'share-cta-test-r5',snapshot,
+window.VocabEngagement=Object.freeze({version:'share-link-label-r6',snapshot,
  ...(testMode?{preview:k=>show(k,'preview'),makeDue:makeDue,reset:resetReminder}:{})});
 window.VocabInstall=Object.freeze({isStandalone:standalone,canPrompt:nativeInstallReady,open:installFromSettings});
 setInterval(tick,1000);sample();persist();displayChanged();updateControls();updateQuickControls();queue();
